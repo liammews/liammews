@@ -11,6 +11,11 @@ export default {
       type: 'string'
     },
     {
+      title: 'Featured?',
+      name: 'featured',
+      type: 'boolean',
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -43,10 +48,14 @@ export default {
       of: [{type: 'reference', to: {type: 'category'}}]
     },
     {
+      name: 'tag',
+      title: 'tag',
+      type: 'text',
+    },
+    {
       title: 'Body', 
       name: 'body',
-      type: 'array', 
-      of: [{type: 'block'}]
+      type: 'blockContent', 
     }
   ],
   preview: {

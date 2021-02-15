@@ -1,9 +1,19 @@
+require('dotenv').config()
+const {
+  api: { projectId, dataset }
+} = requireConfig('../studio/sanity.json')
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-  },
+      title: "Liam Mews",
+      titleTemplate: "%s",
+      description:
+        "The online home of Liam Mews",
+      url: "https://liammews.uk", // No trailing slash allowed!
+      image: "/images/snape.jpg", // Path to your image you placed in the 'static' folder
+      twitterUsername: "@liammews",
+    },
+
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -42,4 +52,20 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
+}
+
+function requireConfig (path) {
+  try {
+    return require(path)
+  } catch (e) {
+    console.error(
+      'Failed to require sanity.json. Fill in projectId and dataset name manually in gatsby-config.js'
+    )
+    return {
+      api: {
+        projectId: process.env.SANITY_PROJECT_ID || 'hdetr6ej',
+        dataset: process.env.SANITY_DATASET || 'production'
+      }
+    }
+  }
 }
