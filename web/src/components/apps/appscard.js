@@ -3,7 +3,7 @@ import React from "react";
 const appCard = ({ article }) => {
   return (
         <a className="no-underline" href={`${article.node.link}`}>
-            <div className="flex flex-row hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg p-6 mb-8 space-x-4">
+            <div className="flex flex-row hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg p-6 lg:mb-8 space-x-4">
 
                 <div className="flex flex-col justify-center align-middle">
 

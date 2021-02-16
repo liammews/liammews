@@ -7,7 +7,7 @@ const Articles = ({ articles }) => {
   return (
     <div>
     <hr className="mb-12 mt-2 w-full"  />
-        <div className="flex flex-row flex-wrap justify-between w-full mb-12 space-y-12 lg:space-y-0">
+        <div className="flex flex-row flex-wrap justify-between w-full mb-6 space-y-6 lg:space-y-0">
           {Articles.map((article, i) => {
             return (
               <Card

@@ -9,7 +9,7 @@ function Header ({ siteTitle }) {
   const [isExpanded, toggleExpansion] = useState(false)
 
   return (
-    <nav className="flex items-center lg:justify-center flex-wrap pl-4 pt-2 lg:pb-4 fixed w-full lg:static border-b border-gray-300 bg-white dark:bg-gray-800 bg-opacity-80 bg-blur-light">
+    <nav className="flex items-center lg:justify-center flex-wrap pl-4 pt-2 lg:pb-4 fixed w-full lg:static border-b border-gray-300 bg-white dark:bg-gray-900 bg-opacity-80 bg-blur-light">
 
       <div className="flex justify-center lg:hidden">
       <button onClick={() => toggleExpansion(!isExpanded)} className="flex items-center py-2 text-black dark:text-white text-lg mb-4">

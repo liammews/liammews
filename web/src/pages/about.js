@@ -17,7 +17,7 @@ const AboutPage = () => {
 
         <hr className="mb-12" />
 
-        <div className="flex flex-row space-x-24 mb-12">
+        <div className="flex flex-row space-x-12 mb-12">
 
           <div>
           <p className="font-bold mb-4">Connect with me!</p>

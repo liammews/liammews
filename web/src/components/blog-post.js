@@ -6,7 +6,7 @@ function BlogPost (props) {
   const { _rawBody, title, publishedAt } = props
   return (
     <div>
-    <article className="pt-16">
+    <article className="pt-4">
             <h1 className="text-4xl dark:text-white mb-2">{title}</h1>
 
             <p className="text-gray-400 dark:text-gray-300">Last Updated {publishedAt}</p>
