@@ -10,11 +10,20 @@ const Music = () => {
         <Seo></Seo>
         <Hero></Hero>
 
-        <a href="/music">
-        <div className="mb-12 p-4 flex flex-row items-end rounded-md bg-white dark:bg-gray-800 shadow hover:shadow-md h-80">
-        <div className="flex flex-col">
-        <div><p className="text-2xl font-bold dark:text-white">Music</p></div>
-        <div><p className="text-base text-gray-500 dark:text-gray-300">A collection of my favourite albums</p></div>
+        <a href="/music" className="no-underline">
+        <div className="mb-12 p-4 flex flex-row items-end rounded-md shadow hover:shadow-lg h-80 bg-image-1">
+        <div className="flex flex-col module-inside">
+        <div><p className="text-2xl font-bold text-white no-underline">Music</p></div>
+        <div><p className="text-base text-white no-underline">A collection of my favourite albums</p></div>
+        </div>
+        </div>
+        </a>
+
+        <a href="/apps" className="no-underline">
+        <div className="mb-12 p-4 flex flex-row items-end rounded-md shadow hover:shadow-lg h-80 bg-image-2">
+        <div className="flex flex-col module-inside">
+        <div><p className="text-2xl font-bold text-white no-underline">Apps and Software</p></div>
+        <div><p className="text-base text-white no-underline">The apps and software I use</p></div>
         </div>
         </div>
         </a>

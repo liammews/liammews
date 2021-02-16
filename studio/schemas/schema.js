@@ -6,17 +6,21 @@ import category from './category'
 import sponsor from './sponsor';
 import about from './about';
 import music from './music';
-import blockContent from './blockContent';
+import figure from './figure'
+import portableText from './portableText';
+import apps from './apps';
 
 export default createSchema({
-  name: 'default',
+  name: 'Blog',
   types: schemaTypes.concat([
     /* Your types here! */
     blogPost,
+    portableText,
+    figure,
     category,
     sponsor,
     about,
     music,
-    blockContent,
+    apps,
   ])
 })

@@ -21,7 +21,7 @@ const data = [
 const tempLinks = data.map(link => {
   return (
     <li className="hover:text-blue-500 dark:text-white dark:hover:text-blue-400" key={link.id}>
-      <Link to={link.url}>{link.text}</Link>
+      <Link className="no-underline" to={link.url}>{link.text}</Link>
     </li>
   )
 })

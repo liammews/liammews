@@ -1,4 +1,4 @@
-@import '../styles/media-queries.css';
+@import '../styles/custom-media.css';
 
 :root {
   --base-unit: 17;

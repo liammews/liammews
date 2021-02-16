@@ -9,6 +9,6 @@
 }
 
 .caption {
-  composes: small from '../typography.module.css';
+  composes: small from './typography.module.css';
   margin-top: 0.5rem;
 }

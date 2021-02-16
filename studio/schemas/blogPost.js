@@ -2,7 +2,7 @@ import {format} from 'date-fns'
 
 export default {
   name: 'blogPost',
-  title: 'Sample project',
+  title: 'Blog Posts',
   type: 'document',
   fields: [
     {
@@ -55,7 +55,7 @@ export default {
     {
       title: 'Body', 
       name: 'body',
-      type: 'blockContent', 
+      type: 'PortableText', 
     }
   ],
   preview: {

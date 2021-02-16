@@ -1,15 +1,15 @@
 import React from "react";
 
-const aboutHero = ({ data }) => {
+const musicHero = () => {
     return(
         <div>
         <div className="flex flex-col">
             <div className="hero-logo">
             </div>
-            <h1 className="text-4xl font-bold dark:text-white">About</h1>
+            <h1 className="text-4xl font-bold dark:text-white">Apps and Software</h1>
             <div className="flex flex-row mt-2">
                 <div className="w-full flex flex-row justify-between">
-                <div><p className="text-xl text-gray-400  dark:text-gray-300  mt-0  mb-0">Find out some more about me</p></div>
+                <div><p className="text-xl text-gray-400 dark:text-gray-300 mt-0  mb-0">My favourite apps and software</p></div>
                 <div>
                 </div>
                 </div>
@@ -19,4 +19,4 @@ const aboutHero = ({ data }) => {
         </div>
     )
 }
-export default aboutHero;
+export default musicHero;

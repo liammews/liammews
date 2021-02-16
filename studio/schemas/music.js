@@ -2,7 +2,7 @@ import {format} from 'date-fns'
 
 export default {
   name: 'music',
-  title: 'music',
+  title: 'Music',
   type: 'document',
   fields: [
     {
