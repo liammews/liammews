@@ -11,6 +11,7 @@ export const query = graphql`
               publishedAt(formatString: "DD MMM YYYY")
               title
               tag
+              link
               _rawBody
               slug {
                 current

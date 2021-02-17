@@ -14,7 +14,7 @@ const musicHero = () => {
                 </div>
                 </div>
             </div>
-            <div className="mb-10"  />
+            <div className="mb-6"  />
         </div>
         </div>
     )

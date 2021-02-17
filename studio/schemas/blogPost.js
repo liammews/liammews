@@ -53,6 +53,11 @@ export default {
       type: 'text',
     },
     {
+      name: 'link',
+      title: 'Link',
+      type: 'text',
+    },
+    {
       title: 'Body', 
       name: 'body',
       type: 'PortableText', 
