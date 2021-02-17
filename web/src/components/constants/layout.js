@@ -24,7 +24,8 @@ const Layout = ({ children }) => {
 
   return (
     <>
-    <div className="bg-white dark:bg-black min-h-screen">
+    <div className="bg-white dark:bg-gray-900 min-h-screen">
+
             <Nav></Nav>
       <div className="px-4 pt-24 lg:pt-12 lg:max-w-screen-md lg:ml-auto lg:mr-auto">
         <main>{children}</main>

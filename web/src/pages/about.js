@@ -10,7 +10,7 @@ const AboutPage = () => {
 
   return(
     <Layout>
-            <Seo></Seo>
+            <Seo title={'About'}></Seo>
       <div>
         <AboutHero></AboutHero>
         <AboutInfo articles={data.allSanityAbout.edges} />
@@ -32,7 +32,7 @@ const AboutPage = () => {
           <a href="/music"><p className="text-sm mb-2">View my favourite albums</p></a>
           <a href="/my-workspace"><p className="text-sm mb-2">View my workspace</p></a>
           <a href="/apps"><p className="text-sm mb-2">Find out what apps I'm using</p></a>
-          <a href="/home"><p className="text-sm mb-2">View my latest blog posts</p></a>
+          <a href="/"><p className="text-sm mb-2">View my latest blog posts</p></a>
           </div>
 
         </div>

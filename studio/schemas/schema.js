@@ -9,6 +9,7 @@ import music from './music';
 import figure from './figure'
 import portableText from './portableText';
 import apps from './apps';
+import siteSettings from './site-settings';
 
 export default createSchema({
   name: 'Blog',
@@ -22,5 +23,6 @@ export default createSchema({
     about,
     music,
     apps,
+    siteSettings,
   ])
 })

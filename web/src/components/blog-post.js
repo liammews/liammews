@@ -9,7 +9,7 @@ function BlogPost (props) {
     <article className="pt-4">
             <h1 className="text-4xl dark:text-white mb-2">{title}</h1>
 
-            <p className="text-gray-400 dark:text-gray-300">Last Updated {publishedAt}</p>
+            <p className="text-gray-400 dark:text-gray-300">Last updated - {publishedAt}</p>
 
             <div className="mt-12">
             {_rawBody && <BlockContent blocks={_rawBody} />}
@@ -17,7 +17,7 @@ function BlogPost (props) {
     </article>
 
     <div>
-    <hr className="mb-8"></hr>
+    <hr className="mb-8 mt-8"></hr>
 
     <div className="mb-8">
     <p className="text-black dark:text-white font-bold">Enjoy this post?</p>

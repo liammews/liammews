@@ -52,7 +52,7 @@
       }
 
       p {
-        @apply text-base mb-1 text-black dark:text-white;
+        @apply text-base mb-4 text-black dark:text-white;
       }
 
       a{
