@@ -10,6 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Nav from "./nav"
 import Footer from "./footer"
+import { Helmet } from "react-helmet"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -24,6 +25,10 @@ const Layout = ({ children }) => {
 
   return (
     <>
+    <Helmet>
+    <script async defer data-domain="liammews.com" src="https://plausible.io/js/plausible.js"></script>
+    </Helmet>
+    
     <div className="bg-white dark:bg-gray-900 min-h-screen">
 
             <Nav></Nav>
