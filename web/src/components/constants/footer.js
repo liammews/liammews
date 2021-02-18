@@ -13,6 +13,7 @@ const Footer = () => (
           <ul className="flex flex-col space-y-4">
             <li className="hover:text-blue-600 dark:text-white dark:hover:text-blue-400"><a className="no-underline" href="/my-workspace">My Workspace</a></li>
             <li className=" hover:text-blue-600 dark:text-white dark:hover:text-blue-400"><a className="no-underline" href="/apps">My App Toolkit</a></li>
+            <li className=" hover:text-blue-600 dark:text-white dark:hover:text-blue-400"><a className="no-underline" href="/now-february">Now</a></li>
           </ul>
         </div>
 
