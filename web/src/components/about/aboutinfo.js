@@ -23,7 +23,7 @@ function AboutInfo (props) {
           <div>
           <p className="font-bold mb-4">Connect with me!</p>
           <a href="https://twitter.com/liammews"><p className="text-sm mb-2">Follow me on Twitter</p></a>
-          <a href="mailto:hi@lium.uk"><p className="text-sm mb-2">Let's chat via email</p></a>
+          <a href="mailto:hi@liammews.com"><p className="text-sm mb-2">Let's chat via email</p></a>
           <a href="https://github.com/liammews"><p className="text-sm mb-2">See what I'm up to on GitHub</p></a>
           <a href="https://www.behance.net/liammews"><p className="text-sm mb-2">See my work on Behance</p></a>
           </div>
