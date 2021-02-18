@@ -23,12 +23,12 @@ function BlogPost (props) {
     <p className="text-black dark:text-white font-bold">Enjoy this post?</p>
     <p className="text-black dark:text-white font-base mb-4">You could always <a href="#" className="underline hover:text-blue-600 dark:hover:text-blue-400">subscribe to my email list</a> or share using the buttons below</p>
     <div className="flex flex-row space-x-8">
-    <div><a href={`https://twitter.com/share?url=https://liammews.com/${link}`} className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400"><FaTwitter  /></a></div>
-    <div><a href={`https://www.facebook.com/sharer/sharer.php?u=https://liammews.com/${link}`} className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400"><FaFacebook  /></a></div>
-    <div><a href={`mailto:?subject:Check this out&body=https://liammews.com/${link}`} className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400"><FaEnvelope /></a></div>
-    <div><a href={`https://www.reddit.com/submit?url=https://liammews.com/${link}`} className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400"><FaReddit  /></a></div>
-    <div><a href={`whatsapp://send?text=Check this out! https://liammews.com/${link}`} data-action="share/whatsapp/share" className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400"><FaWhatsapp  /></a></div>
-    <div><a href={`https://www.linkedin.com/sharing/share-offsite/?url=https://liammews.com/${link}`} className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400"><FaLinkedin /></a></div>
+    <div><a href={`https://twitter.com/share?url=https://liammews.com/${link}`} className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-70"><FaTwitter  /></a></div>
+    <div><a href={`https://www.facebook.com/sharer/sharer.php?u=https://liammews.com/${link}`} className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-70"><FaFacebook  /></a></div>
+    <div><a href={`mailto:?subject:Check this out&body=https://liammews.com/${link}`} className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-70"><FaEnvelope /></a></div>
+    <div><a href={`https://www.reddit.com/submit?url=https://liammews.com/${link}`} className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-70"><FaReddit  /></a></div>
+    <div><a href={`whatsapp://send?text=Check this out! https://liammews.com/${link}`} data-action="share/whatsapp/share" className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition duration-500 ease-in-out transform hover:-translate-y-2 hover:scale-70"><FaWhatsapp  /></a></div>
+    <div><a href={`https://www.linkedin.com/sharing/share-offsite/?url=https://liammews.com/${link}`} className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition duration-500 ease-in-out transform hover:-translate-y-2 hover:scale-70"><FaLinkedin /></a></div>
     </div>
     </div>
 

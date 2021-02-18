@@ -22,7 +22,7 @@ const Music = () => {
 
 export const query = graphql`
 {
-    allSanityMusic {
+  allSanityMusic(sort: {fields: date, order: DESC}) {
       edges {
         node {
           date

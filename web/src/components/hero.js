@@ -14,10 +14,10 @@ const Hero = () => {
                 Part-time golfer, writer and developer.</p></div>
                 <div className="hidden md:flex flex-row ">
                     <ul className="flex flex-row space-x-3 items-end">
-                        <li className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"><a href="https://twitter.com/liammews"><FaTwitter /></a></li>
-                        <li className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"><a href="mailto:hi@lium.uk"><FaEnvelope /></a></li>
-                        <li className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"><a href="https://www.behance.net/liammews"><FaBehance /></a></li>
-                        <li className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"><a href="https://github.com/liammews"><FaGithub /></a></li>
+                        <li className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-70"><a href="https://twitter.com/liammews"><FaTwitter /></a></li>
+                        <li className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-70"><a href="mailto:hi@lium.uk"><FaEnvelope /></a></li>
+                        <li className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-70"><a href="https://www.behance.net/liammews"><FaBehance /></a></li>
+                        <li className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-70"><a href="https://github.com/liammews"><FaGithub /></a></li>
                     </ul>
                 </div>
                 </div>

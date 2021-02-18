@@ -24,7 +24,7 @@ const IndexPage = () => {
 
 export const query = graphql`
 {
-  allSanityBlogPost {
+  allSanityBlogPost(sort: {fields: publishedAt, order: DESC}) {
     edges {
       node {
         title

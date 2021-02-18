@@ -22,7 +22,7 @@ const Music = () => {
 
 export const query = graphql`
 {
-  allSanityApps {
+  allSanityApps(sort: {fields: device, order: ASC}) {
     edges {
       node {
         description
