@@ -7,14 +7,14 @@ const Music = () => {
 
   return (
     <Layout>
-        <Seo></Seo>
+        <Seo title={'Collections'} description={'Collections of my favourite things.'}></Seo>
         <Hero></Hero>
 
         <a href="/music" className="no-underline">
         <div className="mb-12 p-4 flex flex-row items-end rounded-md shadow hover:shadow-lg h-80 bg-image-1 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-70">
         <div className="flex flex-col pl-4 module-inside">
-        <div><p className="text-2xl font-bold text-white no-underline mb-0">Music</p></div>
-        <div><p className="text-base text-white no-underline">A collection of my favourite albums</p></div>
+        <div><p className="text-2xl font-bold text-white no-underline m-0">Music</p></div>
+        <div><p className="text-base text-white no-underline m-0">A collection of my favourite albums</p></div>
         </div>
         </div>
         </a>
@@ -22,8 +22,8 @@ const Music = () => {
         <a href="/apps" className="no-underline">
         <div className="mb-12 p-4 flex flex-row items-end rounded-md shadow hover:shadow-lg h-80 bg-image-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-70">
         <div className="flex flex-col pl-4 module-inside">
-        <div><p className="text-2xl font-bold text-white no-underline mb-0">Apps and Software</p></div>
-        <div><p className="text-base text-white no-underline">The apps and software I use</p></div>
+        <div><p className="text-2xl font-bold text-white no-underline m-0">Apps and Software</p></div>
+        <div><p className="text-base text-white no-underline m-0">The apps and software I use</p></div>
         </div>
         </div>
         </a>

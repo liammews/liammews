@@ -13,8 +13,8 @@ const Card = ({ article }) => {
           </div>
       <div className="flex flex-row justify-start space-x-8">
         <div className="pt-1">
-          <p className="text-gray-400  dark:text-gray-300  text-sm capitalize mb-0">{article.node.publishedAt}</p>
-          <p className="text-gray-400  dark:text-gray-300  text-sm capitalize mb-0">{article.node.tag} </p>
+          <p className="text-gray-400  dark:text-gray-300  text-sm capitalize m-0">{article.node.publishedAt}</p>
+          <p className="text-gray-400  dark:text-gray-300  text-sm capitalize m-0">{article.node.tag} </p>
         </div>
         <div className="flex flex-col">
         <Link className="no-underline" to={`${article.node.slug.current}`}>
@@ -23,13 +23,13 @@ const Card = ({ article }) => {
           </div>
 
           <div>          
-            <p className=" text-black font-medium text-2xl hover:text-blue-500 dark:text-white mb-0">
+            <p className=" text-black font-medium text-2xl hover:text-blue-500 dark:text-white m-0">
             {article.node.title}
           </p>
           </div>
 
           <div>          
-            <p className="text-gray-400  dark:text-gray-300  text-base mb-0">
+            <p className="text-gray-400  dark:text-gray-300  text-base m-0">
             {article.node.excerpt}
           </p>
           </div>

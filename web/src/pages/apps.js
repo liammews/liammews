@@ -10,7 +10,7 @@ const Music = () => {
 
   return (
     <Layout>
-        <Seo></Seo>
+        <Seo title={'Apps'} description={'A collection of my favourite apps and software.'}></Seo>
         <Hero></Hero>
       <div>
         <MusicComponent articles={data.allSanityApps.edges} />

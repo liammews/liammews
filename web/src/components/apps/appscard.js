@@ -11,7 +11,7 @@ const appCard = ({ article }) => {
 
             <div className="rounded-full px-3 py-2 border-2 border-blue-500 align-middle self-center justify-center flex lg:hidden">
                 <div>
-                    <p className="text-white text-xs mb-0">{article.node.device}</p>
+                    <p className="text-white text-xs m-0">{article.node.device}</p>
                 </div>
              </div>   
 
@@ -19,14 +19,14 @@ const appCard = ({ article }) => {
 
             <div className=" flex-shrink flex flex-col">
 
-            <div><p className="font-medium text-lg text-black dark:text-white mb-0">{article.node.name}</p></div>
+            <div><p className="font-medium text-lg text-black dark:text-white m-0">{article.node.name}</p></div>
 
-            <div><p className="text-gray-500 dark:text-gray-300">{article.node.description}</p></div>
+            <div><p className="text-gray-500 dark:text-gray-300 mt-0 mb-2">{article.node.description}</p></div>
 
 
             <div className="rounded-full px-3 py-2 border-2 border-blue-500 align-middle self-center justify-center lg:flex hidden lg:self-start">
                 <div>
-                    <p className="dark:text-gray-300 text-gray-500 text-xs mb-0">{article.node.device}</p>
+                    <p className="dark:text-gray-300 text-gray-500 text-xs m-0">{article.node.device}</p>
                 </div>
              </div>   
 

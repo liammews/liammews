@@ -12,6 +12,7 @@ export const query = graphql`
               title
               tag
               link
+              excerpt
               _rawBody
               slug {
                 current
@@ -25,7 +26,7 @@ export const query = graphql`
             const post = data && data.post
             return (
               <Layout>
-            <SEO title={post.title || 'Untitled'} />
+            <SEO title={post.title || 'Untitled'} description={post.excerpt || 'A blog post from Liam Mews'}/>
             <BlogPost {...post} />
               </Layout>
             )

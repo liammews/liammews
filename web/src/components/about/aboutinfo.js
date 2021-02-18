@@ -8,9 +8,9 @@ function AboutInfo (props) {
   return (
     <div>
 
-<hr className="mb-8 mt-2 w-full"  />
+<hr className="mb-12 mt-2 w-full"  />
 
-    <article className="pt-4">
+    <article>
             <div className="">
             {_rawBody && <BlockContent blocks={_rawBody} />}
             </div>

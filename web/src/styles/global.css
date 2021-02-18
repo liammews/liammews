@@ -32,11 +32,11 @@
       }
 
       h2 {
-        @apply text-2xl font-semibold mt-7 mb-1 text-black dark:text-white;
+        @apply text-2xl font-semibold mt-7 -mb-4 text-black dark:text-white;
       }
 
       h3 {
-        @apply text-2xl font-semibold mt-7 mb-1 text-black dark:text-white;
+        @apply text-xl font-semibold mt-7 -mb-4 text-black dark:text-white;
       }
 
       h4 {
@@ -52,7 +52,7 @@
       }
 
       p {
-        @apply text-base mb-4 text-black dark:text-white;
+        @apply text-base my-6 text-black dark:text-white;
       }
 
       a{

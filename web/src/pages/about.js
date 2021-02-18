@@ -22,7 +22,7 @@ export const query = graphql`
 
             return (
               <Layout>
-            <SEO  />
+            <SEO title={'About'} description={'Find out some more about me.'}  />
             <AboutHero  />
             <AboutInfo {...post} />
               </Layout>
