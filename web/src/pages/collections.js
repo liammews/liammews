@@ -7,7 +7,7 @@ const Music = () => {
 
   return (
     <Layout>
-        <Seo title={'Collections'} description={'Collections of my favourite things.'}></Seo>
+        <Seo title={'Collections'} description={'Collections of my favourite things.'} image={'https://cdn.sanity.io/images/hdetr6ej/production/7bf363db800c48f6cfcab9c430e193d733312aad-770x420.jpg?w=2000&h=2000&fit=max'}></Seo>
         <Hero></Hero>
 
         <a href="/music" className="no-underline">

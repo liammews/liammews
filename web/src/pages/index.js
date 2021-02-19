@@ -11,7 +11,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <div>
-      <Seo></Seo>
+      <Seo image={'https://cdn.sanity.io/images/hdetr6ej/production/7bf363db800c48f6cfcab9c430e193d733312aad-770x420.jpg?w=2000&h=2000&fit=max'} ></Seo>
         <Hero></Hero>
         <div className="container">
           <ArticlesComponent articles={data.allSanityBlogPost.edges} />

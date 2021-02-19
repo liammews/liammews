@@ -10,7 +10,7 @@ const Music = () => {
 
   return (
     <Layout>
-        <Seo title={'Apps'} description={'A collection of my favourite apps and software.'}></Seo>
+        <Seo title={'Apps'} description={'A collection of my favourite apps and software.'} image={'https://cdn.sanity.io/images/hdetr6ej/production/7bf363db800c48f6cfcab9c430e193d733312aad-770x420.jpg?w=2000&h=2000&fit=max'}></Seo>
         <Hero></Hero>
       <div>
         <MusicComponent articles={data.allSanityApps.edges} />
