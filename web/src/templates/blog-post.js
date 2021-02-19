@@ -14,6 +14,13 @@ export const query = graphql`
               link
               excerpt
               _rawBody
+              mainImage {
+                asset {
+                  fluid {
+                    src
+                  }
+                }
+              }
               slug {
                 current
               }
@@ -26,7 +33,7 @@ export const query = graphql`
             const post = data && data.post
             return (
               <Layout>
-            <SEO title={post.title || 'Untitled'} description={post.excerpt || 'A blog post from Liam Mews'}/>
+            <SEO title={post.title || 'Untitled'} description={post.excerpt || 'A blog post from Liam Mews'} image={post.mainImage.asset.fluid.src}/>
             <BlogPost {...post} />
               </Layout>
             )

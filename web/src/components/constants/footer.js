@@ -3,7 +3,7 @@ import FooterLinks from "./footerlinks"
 import { FaTwitter, FaEnvelope, FaBehance, FaGithub } from "react-icons/fa";
 
 const Footer = () => (
-      <footer className="max-w-full h-14 pt-4 pb-40 border-t border-gray-300 dark:bg-gray-900">
+      <footer className="max-w-full h-14 pt-4 pb-52 border-t border-gray-300 dark:bg-gray-900">
         <div className="flex justify-between mt-5">
         <div>
         <FooterLinks  />

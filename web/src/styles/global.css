@@ -59,6 +59,10 @@
         @apply underline;
       }
 
+      img{
+        @apply rounded-lg
+      }
+
       figcaption{
         @apply  text-black dark:text-white text-base mt-2;
       }
