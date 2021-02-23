@@ -3,24 +3,29 @@ import { Link } from "gatsby"
 const data = [
   {
     id: 1,
-    text: "Home",
+    text: "Blog",
     url: "/",
   },
   {
     id: 2,
-    text: "About",
-    url: "/about/",
+    text: "Work",
+    url: "/work/",
   },
   {
     id: 3,
     text: "Collections",
     url: "/collections/",
   },
+  {
+    id: 4,
+    text: "About",
+    url: "/about/",
+  },
 ]
 
 const tempLinks = data.map(link => {
   return (
-    <li className="hover:text-blue-500 dark:text-white dark:hover:text-blue-400" key={link.id}>
+    <li className="mt-0 pl-0 hover:text-blue-500 dark:text-white dark:hover:text-blue-400" key={link.id}>
       <Link className="no-underline" to={link.url}>{link.text}</Link>
     </li>
   )
@@ -28,7 +33,7 @@ const tempLinks = data.map(link => {
 
 export default ({ styleClass }) => {
   return (
-    <ul className={`space-y-4 ${styleClass ? styleClass : ""}`}>
+    <ul className={`pl-0 list-none my-0 space-y-4 ${styleClass ? styleClass : ""}`}>
       {tempLinks}
     </ul>
   )

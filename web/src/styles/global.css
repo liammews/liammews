@@ -26,17 +26,57 @@
   background-size: cover;
 }
 
+
+.breakout {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+.bg-image-3 {
+  background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.7)), url(https://i.imgur.com/WNSVOov.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-image-4 {
+  background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.7)),
+  url(https://i.imgur.com/vUu3cfl.jpg);
+  background-size: cover;
+  background-position: center;
+  
+}
+
+.bg-image-5 {
+  background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.7)), url(https://i.imgur.com/QqHkzuz.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-image-6 {
+  background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.7)), url(https://i.imgur.com/dSS4JMh.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-image-7 {
+  background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.0), rgba(0, 0, 0, 0.7)), url(https://cdn.sanity.io/images/hdetr6ej/production/86de57fedf0f33d027ddad15a684f81a8a715aec-2855x1381.jpg?w=2000&h=2000&fit=max);
+  background-size: cover;
+  background-position: center;
+}
+
+
+
 @layer base {
       h1 {
         @apply text-4xl font-semibold text-black dark:text-white;
       }
 
       h2 {
-        @apply text-2xl font-semibold mt-7 -mb-4 text-black dark:text-white;
+        @apply text-2xl font-semibold mt-9 -mb-2 text-black dark:text-white;
       }
 
       h3 {
-        @apply text-xl font-semibold mt-7 -mb-4 text-black dark:text-white;
+        @apply text-xl font-semibold mt-7 -mb-2 text-black dark:text-white;
       }
 
       h4 {
@@ -55,12 +95,20 @@
         @apply text-base my-6 text-black dark:text-white;
       }
 
+      strong {
+        @apply font-medium;
+      }
+
       a{
         @apply underline;
       }
 
-      img{
-        @apply rounded-lg
+      ul {
+        @apply list-disc my-6 text-black dark:text-white pl-6;
+      }
+
+      li {
+        @apply mt-3;
       }
 
       figcaption{
@@ -73,4 +121,6 @@
     html {
       @apply min-h-screen m-0 w-full;
     }
+
+  
   }

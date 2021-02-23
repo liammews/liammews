@@ -5,7 +5,7 @@ import Layout from "../components/constants/layout"
 import Hero from "../components/hero"
 import Seo from "../components/seo"
 
-const IndexPage = () => {
+const Blog = () => {
   const data = useStaticQuery(query);
 
   return (
@@ -53,4 +53,4 @@ export const query = graphql`
 
 `
 
-export default IndexPage
+export default Blog

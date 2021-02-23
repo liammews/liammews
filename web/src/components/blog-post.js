@@ -7,7 +7,10 @@ function BlogPost (props) {
   return (
     <div>
     <article className="pt-4">
-            <h1 className="text-4xl dark:text-white mb-2">{title}</h1>
+
+            <a href="/" className="no-underline text-sm text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300">← Back to blog</a>
+
+            <h1 className="text-4xl dark:text-white mb-2 mt-6">{title}</h1>
 
             <p className="text-gray-400 dark:text-gray-300">Last updated - {publishedAt}</p>
 

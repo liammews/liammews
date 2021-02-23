@@ -35,11 +35,11 @@ function Header ({ siteTitle }) {
 
       <div>
       <div className="flex flex-row pb-12 pl-2">
-                    <ul className="flex flex-row space-x-8 items-end">
-                        <li className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 text-lg"><a href="https://twitter.com/liammews"><FaTwitter /></a></li>
-                        <li className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 text-lg"><a href="mailto:hi@lium.uk"><FaEnvelope /></a></li>
-                        <li className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 text-lg"><a href="https://behance.com/liammews"><FaBehance /></a></li>
-                        <li className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 text-lg"><a href="https://github.com/liammews"><FaGithub /></a></li>
+                    <ul className="pl-0 list-none my-0 flex flex-row space-x-8 items-end">
+                        <li className="mt-0 pl-0 text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 text-lg"><a href="https://twitter.com/liammews"><FaTwitter /></a></li>
+                        <li className="mt-0 pl-0 text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 text-lg"><a href="mailto:hi@lium.uk"><FaEnvelope /></a></li>
+                        <li className="mt-0 pl-0 text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 text-lg"><a href="https://behance.com/liammews"><FaBehance /></a></li>
+                        <li className="mt-0 pl-0 text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 text-lg"><a href="https://github.com/liammews"><FaGithub /></a></li>
                     </ul>
                 </div>
       </div>
