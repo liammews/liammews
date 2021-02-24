@@ -32,7 +32,7 @@ const IndexPage = () => {
     </a>
     </div>
 
-    <a href="/arsenalxformula1" className="no-underline">
+    <a href="/arsenal-formula1" className="no-underline">
     <div className="p-4 flex flex-row items-end shadow hover:shadow-lg h-80 bg-image-5 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-70">
     <div className="flex flex-col pl-4 module-inside">
     <div><p className="text-2xl font-bold text-white no-underline m-0">Arsenal X Formula 1</p></div>
@@ -45,7 +45,7 @@ const IndexPage = () => {
     <a href="#" className="no-underline">
     <div className="p-4 flex flex-row items-end shadow hover:shadow-lg h-80 bg-image-6 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-70">
     <div className="flex flex-col pl-4 module-inside">
-    <div><p className="text-2xl font-bold text-white no-underline m-0">COMING SOON</p></div>
+    <div><p className="text-2xl font-bold text-white no-underline m-0">Coming Soon</p></div>
     <div><p className="text-base text-white no-underline m-0">A collection of my photography</p></div>
     </div>
     </div>
