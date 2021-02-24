@@ -22,11 +22,11 @@ const IndexPage = () => {
     <div className="w-full mb-12 md:grid md:grid-cols-2 gap-4 flex flex-col space-y-4 md:space-y-0">
 
     <div className="col-span-2">
-    <a href="/move" className="no-underline">
+    <a href="#" className="no-underline">
     <div className="p-4 flex flex-row items-end shadow hover:shadow-lg h-80 bg-image-3 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-70">
     <div className="flex flex-col pl-4 module-inside">
-    <div><p className="text-2xl font-bold text-white no-underline m-0">Move</p></div>
-    <div><p className="text-base text-white no-underline m-0">Art inspired by rave culture</p></div>
+    <div><p className="text-2xl font-bold text-white no-underline m-0">Coming Soon</p></div>
+    <div><p className="text-base text-white no-underline m-0">Move - Art inspired by rave culture</p></div>
     </div>
     </div>
     </a>
@@ -42,10 +42,10 @@ const IndexPage = () => {
     </a>
 
     <div className="/photgraphy">
-    <a href="/apps" className="no-underline">
+    <a href="#" className="no-underline">
     <div className="p-4 flex flex-row items-end shadow hover:shadow-lg h-80 bg-image-6 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-70">
     <div className="flex flex-col pl-4 module-inside">
-    <div><p className="text-2xl font-bold text-white no-underline m-0">Photography</p></div>
+    <div><p className="text-2xl font-bold text-white no-underline m-0">COMING SOON</p></div>
     <div><p className="text-base text-white no-underline m-0">A collection of my photography</p></div>
     </div>
     </div>
