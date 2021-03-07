@@ -1,12 +1,11 @@
-Hello World
+<h1>Hello World 👋🏼</h1>
 
 I'm Liam. A full-time Graphic Designer, part-time web-developer, golfer and writer. 
 
-You can find out more about me here:
+Here are my links!
 
-liammews.com
-liammews.com/work
-twitter.com/liammews
-instagram.com/liammews
+<a href="https://liammews.com">My Website</a>
+<a href="https://twitter.com/liammews">Twitter</a>
+<a href="https://instagram.com/liammews">Instagram</a>
 
-I am currently working on Briefrr - a practice ground for designers and developers which will offer free practice briefs and library of over 100 resources!
+I am currently working on <b>Briefrr</b> - a practice ground for designers and developers which will offer free practice briefs and library of over 100 resources!
