@@ -5,9 +5,9 @@ const Hero = () => {
     return(
         <div>
         <div className="flex flex-col">
-            <div className="w-32 h-32 -ml-6 -mb-3">
-                <img src="https://cdn.sanity.io/images/hdetr6ej/production/26f36a61902be1b817f2012a0082055f40b0fde9-200x150.gif?w=2000&h=2000&fit=max"  />
-            </div>
+
+            <div className="w-24 h-24 mb-8 rounded-full hero-image z-30"></div>
+
             <h1 className="text-4xl font-bold  dark:text-white">Hi I'm Liam</h1>
             <div className="flex flex-row mt-2">
                 <div className="w-full flex flex-row justify-between">
