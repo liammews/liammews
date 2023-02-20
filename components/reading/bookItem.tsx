@@ -1,9 +1,11 @@
 
 import ClientSideRoute from "../ClientSideRoute";
 import Image from "next/image";
+import Star from "../icons/star";
+import urlFor from "../../lib/urlFor";
 
 
-function BookItem§({ title, link, author, rating, cover}) {
+function BookItem({ title, link, author, rating, cover}: { title: string; link: string; author: number; rating: number; cover: string; }) {
     return (
         <div>
                 <ClientSideRoute key={title} route={link}>
@@ -20,7 +22,7 @@ function BookItem§({ title, link, author, rating, cover}) {
                         </div>
 
                         <div className="flex flex-col justify-end text-sm">
-                            <p>{book.title}</p>
+                            <p>{title}</p>
                             <p className="mb-2 text-muted dark:text-muted">{author}</p>
 
                             <div className="flex flex-row items-center space-x-0.5">
@@ -38,4 +40,4 @@ function BookItem§({ title, link, author, rating, cover}) {
     )
 }
 
-export default DynamicPostItem
+export default BookItem

@@ -32,7 +32,7 @@ function WorkspaceText() {
 
         <p>The drone I use is a DJI Mini 3 Pro with the RC controller and Fly More kit. I’ve only had this drone for a few months at the time of writing this but so far I’m incredibly pleased with the image quality, ease-of-use and features of this tiny 249g drone. The tiny size and weight also allow me to fly in the UK without any restrictions, making it a perfect drone to throw in a backpack for aerial shots.</p>
 
-        <p>My setup is always getting tweaked and adjusted so check back throughout 2023 for updates. I love seeing other peoples workspaces and home offices so if you've shared your in a post or on socials or have any cool suggestions for things you think would improve my setup, get in touch via Twitter or email me at <a class="autolink" href="mailto:hi@liammews.com">hi@liammews.com</a>.</p>
+        <p>My setup is always getting tweaked and adjusted so check back throughout 2023 for updates. I love seeing other peoples workspaces and home offices so if you've shared your in a post or on socials or have any cool suggestions for things you think would improve my setup, get in touch via Twitter or email me at <a href="mailto:hi@liammews.com">hi@liammews.com</a>.</p>
 </div>
     
     )

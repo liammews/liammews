@@ -2,7 +2,7 @@
 import ClientSideRoute from "./ClientSideRoute";
 
 
-function DynamicPostItem({ title, slug, description}) {
+function DynamicPostItem({title, slug, description}: { title: string; slug: string; description: string }) {
     return (
         <div>
                 <ClientSideRoute key={title} route={`${slug}`}>

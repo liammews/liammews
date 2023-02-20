@@ -1,7 +1,7 @@
 import ClientSideRoute from "../ClientSideRoute";
 
 
-function NavItem({ link, label }) {
+function NavItem({ link, label } : { link: string; label: string; }) {
     return (
         <ClientSideRoute route={link}>
         <div className='h-[40px] px-6 flex justify-center items-center rounded bg-neutral-100'>
