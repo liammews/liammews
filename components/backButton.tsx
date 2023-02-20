@@ -1,7 +1,7 @@
 import ClientSideRoute from "./ClientSideRoute";
 
 
-function DynamicPostItem({ title, slug, description}) {
+function DynamicPostItem() {
     return (
         <div>
         <aside className="absolute hidden md:flex -left-36">
