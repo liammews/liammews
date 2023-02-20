@@ -5,7 +5,6 @@ import PreviewSuspense from "../../components/PreviewSuspense";
 import PreviewBlogList from "../../components/PreviewBlogList";
 import BlogList from "../../components/BlogList";
 import DynamicPosts from "../../components/DynamicPosts";
-import Image from "next/image";
 import Hire from "../../components/icons/hire";
 import Email from "../../components/icons/email";
 import Linkedin from "../../components/icons/linkedin";
