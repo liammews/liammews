@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+:root{
+
+    font-size: 14px;
+
+    --primary: #0d67ee;
+    --background: #fbfbfb;
+    --foreground: #ffffff;
+    --stroke: #06060612;
+    --muted: #5a5a5a;
+    --light-grey: #f1f1f1;
+    --mid-grey: #e2e2e2;
+    --text: #131313;
+
+    --dark-primary: #81b3ff;
+    --dark-background: #101010;
+    --dark-foreground: #1a1a1a;
+    --dark-stroke: #ffffff0c;
+    --dark-muted: #c0c0c0;
+    --dark-light-grey: #2c2c2c;
+    --dark-mid-grey: #373737;
+    --dark-text: #ffffff;
+
+    @apply antialiased scroll-smooth
+}
+
+body {
+    @apply bg-background dark:bg-dark-background text-text dark:text-dark-text
+}
+
+h1{
+    @apply font-medium text-xl text-text dark:text-dark-text
+}
+
+h2{
+    @apply font-medium text-base text-text dark:text-dark-text
+}
+
+h3{
+    @apply font-medium text-base text-text dark:text-dark-text
+}
+
+h4{
+    @apply font-medium text-text dark:text-dark-text
+}
+
+a{
+    @apply underline underline-offset-4 text-muted dark:text-dark-muted decoration-light-grey dark:decoration-dark-light-grey hover:text-primary dark:hover:text-dark-primary
+}
+
+.smooth300{
+    @apply duration-300 ease-in-out
+}
+
+.nounderline{
+    @apply no-underline
+}
+
+.hover-scale{
+    @apply hover:scale-[1.02] transform duration-300 ease-in-out
+}
+
+.custom-prose{
+    @apply prose prose-blockquote:font-serif prose-blockquote:text-xl prose-strong:font-medium prose-strong:text-text dark:prose-strong:text-dark-text prose-blockquote:text-text dark:prose-blockquote:text-dark-text prose-h3:text-[16px] prose-p:leading-7 prose-a:text-blue-500 dark:prose-a:text-dark-text text-text dark:text-dark-text prose-headings:text-text prose-headings:dark:text-dark-text
+}
