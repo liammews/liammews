@@ -1,12 +1,13 @@
 import Image from "next/image";
-import Link from "next/link";
 import urlFor from "../../lib/urlFor";
-import ClientSideRoute from "../ClientSideRoute";
 import Star from "../icons/star";
 import ExternalButton from "../global/ExternalButton";
 
+type Props = {
+    books: Book[];
+};
 
-function ReadList({ books }) {
+function ReadList({ books }: Props) {
     return (
         <div className="grid grid-cols-2 gap-4 md:gap-16">
         {books.map(book => (
@@ -33,7 +34,7 @@ function ReadList({ books }) {
                             <p className="pt-0.5 text-muted dark:text-dark-muted">{book.rating}/10</p>
                             </div>
 
-                            <ExternalButton link={book} label="Amazon" />
+                            <ExternalButton link={book.link} label="Amazon" />
                     </div>
 
 

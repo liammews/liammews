@@ -17,6 +17,35 @@ interface Post extends base {
     description: string;
 }
 
+interface Movie extends base {
+    link: string;
+    title: string;
+    rating: string;
+    cover: Image;
+}
+
+interface App extends base {
+    link: string;
+    description: string;
+    name: string;
+    icon: Image;
+}
+
+interface App extends base {
+    link: string;
+    description: string;
+    name: string;
+    icon: Image;
+}
+
+interface Book extends base {
+    link: string;
+    author: string;
+    rating: string;
+    title: string;
+    cover: Image;
+}
+
 interface Unread extends Base {
     cover: Image;
     title: string;

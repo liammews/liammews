@@ -3,7 +3,11 @@ import urlFor from "../../lib/urlFor";
 import ClientSideRoute from "../ClientSideRoute";
 import Star from "../icons/star";
 
-function WatchList({ movies }) {
+type Props = {
+    movies: Movie[];
+};
+
+function WatchList({ movies }: Props) {
     return (
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8">
         {movies.map(movie => (
