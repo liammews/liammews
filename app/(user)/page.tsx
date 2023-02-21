@@ -9,7 +9,8 @@ import Hire from "../../components/icons/hire";
 import Email from "../../components/icons/email";
 import Linkedin from "../../components/icons/linkedin";
 import Twitter from "../../components/icons/twitter";
-
+import { NextSeo } from "next-seo";
+import SEO from "../../components/global/SEO";
 const query = groq`
     *[_type=='post'] {
         ...,
@@ -22,6 +23,7 @@ export default async function Homepage() {
     if (previewData()){
         return (<PreviewSuspense fallback={
             <div role="status">
+                <SEO title="Liam Mews" description="Designer, developer, founder of Studio Tenth." link="" />
                 <p>
                     Loading Preview Data...
                 </p>
@@ -34,6 +36,7 @@ export default async function Homepage() {
     const posts = await client.fetch(query);
     return(
         <div>
+            <SEO title="Liam Mews" description="Designer, developer, founder of Studio Tenth." link="" />
             <section className="mb-20">
                 <h1 className="text-base">Liam Mews</h1>
                 <h2 className="mb-8 text-base text-muted dark:text-dark-muted">Founder at Tenth Studio</h2>

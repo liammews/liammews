@@ -15,6 +15,7 @@ interface Post extends base {
     slug: Slug;
     title: string;
     description: string;
+    link: string;
 }
 
 interface Movie extends base {

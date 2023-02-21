@@ -2,6 +2,7 @@ import { groq } from "next-sanity";
 import { client } from "../../../lib/sanity.client";
 import AppList from "../../../components/software/appList";
 import BackButton from "../../../components/backButton"
+import SEO from "../../../components/global/SEO";
 
 const query = groq`
     *[_type=='app'] {
@@ -14,6 +15,7 @@ export default async function Software() {
     const apps = await client.fetch(query);
     return(
         <div className="relative">
+            <SEO title="Software" description="The software I use." link="software" />
             <BackButton />
             <section className="mb-16">
             <h1 className="mb-12">My Software Stack</h1>

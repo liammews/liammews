@@ -1,11 +1,8 @@
 import { groq } from "next-sanity";
 import { client } from "../../../../lib/sanity.client";
-import Image from "next/image";
-import urlFor from "../../../../lib/urlFor";
-import Link from "next/link";
-import ClientSideRoute from "../../../../components/ClientSideRoute";
 import { PortableText } from "@portabletext/react";
 import BackButton from "../../../../components/backButton"
+import SEO from "../../../../components/global/SEO";
 
 type Props = {
     params: {
@@ -27,6 +24,7 @@ async function Post({ params: { slug } }: Props) {
 
     return (
         <div className="relative">
+            <SEO title={post.title} description={post.description} link={`/writing/${post.link}`} />
         <BackButton />
         <article className="relative flex space-x-16">
             <section className="space-y-8">

@@ -18,9 +18,8 @@ function ReadingList({ books }: Props) {
                             className="object-cover w-full h-48"
                             src={urlFor(book.cover).url()}
                             alt={book.title}
-                            placeholder="blur"
-                            height="340"
-                            width="340"
+                            height="128"
+                            width="128"
                             />
                         </div>
 

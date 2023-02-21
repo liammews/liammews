@@ -1,12 +1,14 @@
 import WorkspaceText from '../../../components/workspace/WorkspaceText'
 import Image from 'next/image';
 import BackButton from "../../../components/backButton"
+import SEO from '../../../components/global/SEO';
 
 
 export default async function Workspace() {
 
     return (
         <div className='relative'> 
+        <SEO title="Workspace" description="Where I do my work." link="/workspace" />
         <BackButton /> 
 
         <h1>

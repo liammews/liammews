@@ -18,8 +18,8 @@ function AppList({ apps }: Props) {
                             src={urlFor(app.icon).url()}
                             alt={app.name}
                             placeholder="blur"
-                            height="340"
-                            width="340"
+                            height="48"
+                            width="48"
                             />
                         </div>
 

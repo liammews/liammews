@@ -1,9 +1,9 @@
-import { previewData } from "next/headers";
 import { groq } from "next-sanity";
 import { client } from "../../../lib/sanity.client";
 import ReadList from "../../../components/reading/readList";
 import ReadingList from "../../../components/reading/readingList";
 import BackButton from "../../../components/backButton"
+import SEO from "../../../components/global/SEO";
 
 const query1 = groq`
     *[_type=='book'][finished==true] {
@@ -23,6 +23,7 @@ export default async function Reading() {
     const unread = await client.fetch(query2);
     return(
         <div className="relative">
+            <SEO title="Reading" description="What I've been reading." link="reading" />
             <BackButton />
             <section className="mb-16">
             <h1 className="mb-12">Reading</h1>

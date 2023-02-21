@@ -35,7 +35,7 @@ export default function RootLayout({
       <head />
       <body>
         <Providers>
-        <div className='max-w-[39rem] px-2 py-28 md:py-20 mx-auto'>
+        <div className='max-w-[39rem] px-4 py-28 md:py-20 mx-auto'>
         {children}
         </div>
         </Providers>

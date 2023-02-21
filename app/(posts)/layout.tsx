@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${Gambetta_Variable.variable} ${Gambetta_VariableItalic.variable} bg-neutral-50 dark:bg-neutral-900 dark:text-white`}>
       <head />
       <body>
-        <div className='max-w-xl px-3 mx-auto py-28 md:py-20'>
+        <div className='max-w-xl px-4 mx-auto py-28 md:py-20'>
         {children}
         </div>
         </body>

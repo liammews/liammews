@@ -19,9 +19,8 @@ function WatchList({ movies }: Props) {
                         className="object-cover w-full h-48"
                         src={urlFor(movie.cover).url()}
                         alt={movie.title}
-                        placeholder="blur"
-                        height="340"
-                        width="340"
+                        height="192"
+                        width="192"
                         />
                     </div>
 
