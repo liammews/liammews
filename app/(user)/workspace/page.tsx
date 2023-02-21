@@ -18,10 +18,10 @@ export default async function Workspace() {
         <div className='w-full overflow-hidden h-[18em] md:h-[25em] rounded-lg bg-blue-200 my-12'>
             <Image
             className='object-cover h-[18em] md:h-[25em] mx-auto'
-            src="/light-mode.jpg"
+            src="/workspace.webp"
             alt="Image of workspace"
-            width="2200"
-            height="2200" />
+            width="768"
+            height="1000" />
         </div>
 
         <article className='custom-prose prose-a:text-muted dark:prose-a:text-dark-muted'>
