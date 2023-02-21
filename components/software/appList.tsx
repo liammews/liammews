@@ -17,6 +17,7 @@ function AppList({ apps }: Props) {
                             className="object-cover"
                             src={urlFor(app.icon).url()}
                             alt={app.name}
+                            placeholder="blur"
                             height="340"
                             width="340"
                             />

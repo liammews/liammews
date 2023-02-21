@@ -16,6 +16,7 @@ function BookItem({ title, link, author, rating, cover}: { title: string; link: 
                             className="object-cover w-full h-48"
                             src={urlFor(cover).url()}
                             alt={title}
+                            placeholder="blur"
                             height="340"
                             width="340"
                             />
