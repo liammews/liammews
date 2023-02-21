@@ -22,7 +22,7 @@ export default defineConfig({
   [deskTool({
     defaultDocumentNode: getDefaultDocumentNode,
   }), visionTool()], 
-  structure: (S) =>
+  structure: (S:any) =>
   S.list()
     .title("Content")
     .items([
