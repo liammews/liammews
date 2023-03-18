@@ -17,7 +17,7 @@ body {
     --background: #fbfbfb;
     --foreground: #ffffff;
     --stroke: #06060612;
-    --muted: #5a5a5a;
+    --muted: #595959;
     --light-grey: #f1f1f1;
     --mid-grey: #e2e2e2;
     --text: #131313;
@@ -26,7 +26,7 @@ body {
     --dark-background: #101010;
     --dark-foreground: #1a1a1a;
     --dark-stroke: #ffffff0c;
-    --dark-muted: #c0c0c0;
+    --dark-muted: #9D9D9D;
     --dark-light-grey: #2c2c2c;
     --dark-mid-grey: #373737;
     --dark-text: #ffffff;

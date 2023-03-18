@@ -10,7 +10,7 @@ function ClientSideRoute({
   children: React.ReactNode;
   route: string;
 }) {
-  return <Link href={route} className="no-underline">{children}</Link>;
+  return <Link href={route} className="no-underline" target="_blank">{children}</Link>;
 }
 
 export default ClientSideRoute;
