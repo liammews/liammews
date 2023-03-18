@@ -1,11 +1,9 @@
 
-import ClientSideRoute from "./ClientSideRoute";
 
-
-function DynamicPostItem({ title, slug, description }: { title: string; slug: string; description: string }) {
+function WorkItem({ title, link, description }: { title: string; link: string; description: string }) {
   return (
     <div>
-      <ClientSideRoute key={title} route={`${slug}`}>
+      <a href={`${link}`} className="no-underline">
         <div className="flex flex-row justify-between py-6 rounded-md md:p-4 hover:bg-foreground dark:hover:bg-dark-foreground">
           <div>
             <p className="text-text dark:text-dark-text">{title}</p>
@@ -21,9 +19,9 @@ function DynamicPostItem({ title, slug, description }: { title: string; slug: st
           </div>
 
         </div>
-      </ClientSideRoute>
+      </a>
     </div>
   )
 }
 
-export default DynamicPostItem
+export default WorkItem
