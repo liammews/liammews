@@ -41,7 +41,7 @@ export default async function Homepage() {
       <section className="mb-20">
         <h1 className="text-base">Liam Mews</h1>
         <h2 className="mb-8 text-base text-muted dark:text-dark-muted">Founder at Tenth Studio</h2>
-        <p className="mb-6 prose text-text dark:text-dark-text">I am a designer and developer with over seven years experience and the fouder of Studio Tenth, a creative micro-studio specialising in design, development and branding.</p>
+        <p className="mb-6 prose text-text dark:text-dark-text">I am a designer, developer, and fouder of Studio Tenth, a creative micro-studio specialising in design, development and branding.</p>
 
         <div className="flex flex-row flex-wrap text-muted dark:text-dark-muted">
           <a href="https://studiotenth.com" className="flex flex-row items-center mb-4 mr-6 space-x-1 no-underline md:justify-center">
@@ -77,9 +77,11 @@ export default async function Homepage() {
       <section className="mb-20">
         <h2 className="mb-8 text-base">Work</h2>
 
-        <WorkItem title="Studio Tenth" link="https://studiotenth.com/" description="My creative micro-studio" />
+        <WorkItem title="Studio Tenth" link="https://www.studiotenth.com/" date="2023" description="My creative micro-studio" />
 
-        <WorkItem title="Good Design Tools" link="https://gooddesign.tools/" description="A collection of the best tools for designers" />
+        <WorkItem title="Good Design Tools" link="https://www.gooddesign.tools/" date="2023" description="A collection of the best tools for designers" />
+
+        <WorkItem title="Savills" link="https://www.savills.com/" date="2016 - 2022" description="Designer" />
 
       </section>
 

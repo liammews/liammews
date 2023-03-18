@@ -1,11 +1,12 @@
 import Button from "./Button";
+import ClientSideRoute from "../ClientSideRoute";
 
 
 function ExternalButton({ link, label }: { link: string; label: string; }) {
   return (
-    <a href={link} className="no-underline">
+    <ClientSideRoute route={link}>
       <Button label={label} />
-    </a>
+    </ClientSideRoute>
   )
 }
 

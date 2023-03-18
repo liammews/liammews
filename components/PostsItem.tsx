@@ -6,7 +6,7 @@ function DynamicPostItem({ title, slug, description }: { title: string; slug: st
   return (
     <div>
       <ClientSideRoute key={title} route={`${slug}`}>
-        <div className="flex flex-row justify-between py-6 rounded-md md:p-4 hover:bg-foreground dark:hover:bg-dark-foreground">
+        <div className="flex flex-row justify-between py-6 rounded-md md:p-4 hover:bg-neutral-100 dark:hover:bg-dark-foreground">
           <div>
             <p className="text-text dark:text-dark-text">{title}</p>
             <p className="text-muted dark:text-dark-muted">{description}</p>

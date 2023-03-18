@@ -58,6 +58,20 @@ a{
     @apply underline underline-offset-4 text-muted dark:text-dark-muted decoration-light-grey dark:decoration-dark-light-grey hover:text-primary dark:hover:text-dark-primary
 }
 
+.button-styles{
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.08);
+    border: 2px solid;
+    border-radius: 6px;
+    border-image-source: linear-gradient(180deg, #7B7B7B 0%, #000000 100%);
+    background: linear-gradient(0deg, #1E1E1E, #1E1E1E),
+    linear-gradient(180deg, #7B7B7B 0%, #000000 100%);
+}
+
+.button-styles:hover{
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.20);
+}
+
 .smooth300{
     @apply duration-300 ease-in-out
 }

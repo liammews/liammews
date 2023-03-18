@@ -1,17 +1,13 @@
 
-import ClientSideRoute from "../ClientSideRoute";
 
-
-function ExternalButton({ link, label} : { link: string; label: string; }) {
-    return (
-        <ClientSideRoute route={link}>
-        <button className="flex items-center justify-center w-full px-8 py-3 space-x-1 text-xs no-underline rounded-lg bg-foreground dark:bg-dark-background border-[1px] border-stroke dark:border-dark-stroke hover:text-text dark:hover-text-dark-text hover:shadow smooth300">  
-            <p>
-                {label}
-            </p>
-        </button>
-        </ClientSideRoute>
-    )
+function Button({ label }: { label: string; }) {
+  return (
+    <button className="flex text-[13px] flex-row px-[16px] py-[6px] text-white hover-scale button-styles">
+      <p>
+        {label}
+      </p>
+    </button>
+  )
 }
 
-export default ExternalButton
+export default Button
