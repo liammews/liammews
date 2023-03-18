@@ -14,6 +14,7 @@ function SEO({ link, title, description }: { link: string; title: string; descri
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content="https://www.liammews.com/og-image.png" />
+      <meta name="twitter:card" content="summary" />
     </head>
   )
 }
