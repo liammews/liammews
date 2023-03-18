@@ -36,7 +36,7 @@ export default async function Homepage() {
       <SEO title="Liam Mews" description="Designer, developer, founder of Studio Tenth." link="" />
       <section className="mb-20">
         <Image
-          className="object-cover w-full h-24 w-24 rounded-full mb-6"
+          className="object-cover w-24 h-24 rounded-full mb-6"
           src="/headshot.webp"
           alt="Headshot of Liam Mews"
           height="340"

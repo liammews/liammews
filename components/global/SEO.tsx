@@ -15,6 +15,7 @@ function SEO({ link, title, description }: { link: string; title: string; descri
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content="https://www.liammews.com/og-image.png" />
       <meta name="twitter:card" content="summary" />
+      <script defer data-domain="liammews.com" src="https://plausible.io/js/script.js"></script>
     </head>
   )
 }

@@ -11,7 +11,6 @@ export default function Head() {
       <meta name="twitter:site" content="@liammews" />
       <meta name="twitter:creator" content="@liammews" />
       <link rel="apple-touch-icon" href="/graphics/apple-touch-icon.png" />
-      <script defer data-domain="liammews.com" src="https://plausible.io/js/script.js"></script>
     </>
   )
 }
