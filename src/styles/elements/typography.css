@@ -1,0 +1,7 @@
+.text-color-secondary {
+    color: var(--text-color-secondary);
+}
+
+.text-color-muted {
+    opacity: 0.7;
+}

@@ -1,0 +1,21 @@
+---
+
+import "./work-card.css"
+import GridItem from "../GridItem/index.astro"
+
+interface Props {
+    title: string;
+    description: string;
+    image: string;
+    link: string;
+}
+
+const { title, description, image, link } = Astro.props;
+
+---
+
+<GridItem title={title} description={description}link={link}>
+    <div class="work-card_content">
+        <img src={image} alt={title} class="work-card_image" />
+    </div>
+</GridItem>

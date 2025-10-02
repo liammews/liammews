@@ -1,0 +1,21 @@
+---
+import "./nav.css"
+
+interface Props {
+    link: string;
+}
+
+const { link } = Astro.props;
+
+// Get current pathname
+const currentPath = Astro.url.pathname;
+
+// Check if current path matches the link
+const isActive = currentPath === link || (link !== '/' && currentPath.startsWith(link));
+---
+
+<li>
+    <a href={link} class:list={["nav_menu-item", { active: isActive }]}>
+        <slot />
+    </a>
+</li>

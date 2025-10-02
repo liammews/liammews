@@ -1,0 +1,135 @@
+---
+import "./modal.css";
+import { Icon } from "astro-icon/components";
+import Button from "../Button/index.astro";
+
+export interface Props {
+  id: string;
+  keyboardShortcut?: string;
+}
+
+const { id, keyboardShortcut } = Astro.props;
+---
+
+<div 
+  id={id}
+  class="modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby={`${id}-title`}
+  aria-hidden="true"
+  tabindex="-1"
+>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id={`${id}-title`} class="modal-title">
+        <slot name="title" />
+      </h2>
+      <Button modalId={id} action="close" ariaLabel="Close modal" tooltip="Esc" tooltipPosition="left">
+        <Icon name="x" />
+      </Button>
+    </div>
+    <div class="modal-body">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ id, keyboardShortcut }}>
+  // Accessible modal functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+
+    let previousActiveElement = null;
+
+    // Set keyboard shortcut if provided
+    if (keyboardShortcut) {
+      modal.dataset.keyboardShortcut = keyboardShortcut;
+    }
+
+    // Show modal function
+    function showModal() {
+      // Store the currently focused element
+      previousActiveElement = document.activeElement;
+      
+      modal.style.display = 'block';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      
+      // Focus the modal
+      setTimeout(() => {
+        modal.focus();
+        // Trap focus within modal
+        trapFocus(modal);
+      }, 0);
+    }
+
+    // Hide modal function
+    function hideModal() {
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      
+      // Return focus to the previously focused element
+      if (previousActiveElement && previousActiveElement.focus) {
+        previousActiveElement.focus();
+      }
+    }
+
+    // Focus trap function
+    function trapFocus(element) {
+      const focusableElements = element.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstFocusableElement = focusableElements[0];
+      const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+      element.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab') {
+          if (e.shiftKey) {
+            if (document.activeElement === firstFocusableElement) {
+              lastFocusableElement.focus();
+              e.preventDefault();
+            }
+          } else {
+            if (document.activeElement === lastFocusableElement) {
+              firstFocusableElement.focus();
+              e.preventDefault();
+            }
+          }
+        }
+      });
+    }
+
+    // Handle keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      const shortcut = modal.dataset.keyboardShortcut;
+      if (shortcut && e.key.toLowerCase() === shortcut.toLowerCase() && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        showModal();
+      }
+      if (e.key === 'Escape' && modal.style.display === 'block') {
+        hideModal();
+      }
+    });
+
+    // Handle close button
+    modal.addEventListener('click', (e) => {
+      if (e.target.closest('[data-modal-close]')) {
+        hideModal();
+      }
+    });
+
+    // Handle clicking outside
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        hideModal();
+      }
+    });
+
+    // Make functions globally available for button component
+    window['showModal_' + id] = showModal;
+    window['hideModal_' + id] = hideModal;
+  });
+</script>

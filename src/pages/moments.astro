@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/layout.astro";
+import { loadQuery } from "../sanity/lib/load-query";
+import SanityImage from "../components/SanityImage.astro";
+
+// GROQ query to fetch all moments
+const MOMENTS_QUERY = `*[_type == "moments"] | order(_createdAt desc) {
+  _id,
+  name,
+  image {
+    asset->{
+      _id,
+      url
+    },
+    alt
+  }
+}`;
+
+const { data: moments } = await loadQuery({
+  query: MOMENTS_QUERY,
+});
+---
+
+<Layout 
+  title="Moments"
+  image="/favicon.svg"
+>
+  <main>
+    <h1>Moments</h1>
+    <div>
+      {(moments as any[]).map((moment: any) => (
+        <div>
+          {moment.image && (
+            <SanityImage 
+              image={{
+                ...moment.image,
+                alt: moment.image.alt || moment.name
+              }}
+              width={400}
+              height={300}
+            />
+          )}
+          <h2>{moment.name}</h2>
+        </div>
+      ))}
+    </div>
+    {(moments as any[]).length === 0 && (
+      <p>No moments found. Add some moments in your Sanity Studio!</p>
+    )}
+  </main>
+</Layout>

@@ -1,0 +1,40 @@
+---
+import "./nav.css";
+import Button from "../Button/index.astro";
+import { Icon } from "astro-icon/components";
+import Modal from "../Modal/index.astro";
+import NavItem from "./NavItem.astro";
+---
+
+
+<header class="nav_container">
+    <Button ariaLabel="Navigate to home" link="/">
+        <Icon name="logo" />
+    </Button>
+
+    <div class="nav_button-group">
+        <slot />
+        <Button ariaLabel="Open Menu" modalId="menu" action="open" tooltip="⌘K">
+            <Icon name="list" />
+        </Button>
+    </div>
+
+    <Modal id="menu" keyboardShortcut="k">
+        <div slot="title">Menu</div>
+
+        <nav>
+            <ul class="nav_menu">
+                <NavItem link="/">Index</NavItem>
+                <NavItem link="/about">Projects</NavItem>
+                <NavItem link="/contact">About me</NavItem>
+                <NavItem link="/writing">Writing</NavItem>
+                <NavItem link="/moments">Moments</NavItem>
+                <NavItem link="/inventory">Inventory</NavItem>
+            </ul>
+        </nav>
+    </Modal>
+
+</header>
+  
+
+

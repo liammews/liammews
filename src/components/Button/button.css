@@ -1,0 +1,34 @@
+.button {
+    background-color: var(--surface-foreground-idle);
+    height: 2.75rem;
+    width: 2.75rem;
+    font-size: 1.125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: var(--border-radius-medium);
+    cursor: pointer;
+    position: relative;
+
+    & > * {
+        pointer-events: none;
+    }
+
+    &:hover {
+        background-color: var(--surface-foreground-hover);
+    }
+
+    &:active {
+        background-color: var(--surface-foreground-active);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--focus-color);
+        outline-offset: 2px;
+    }
+}
+
+.button  {
+
+}

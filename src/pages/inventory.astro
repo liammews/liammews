@@ -1,0 +1,87 @@
+---
+import Layout from "../layouts/layout.astro";
+import { loadQuery } from "../sanity/lib/load-query";
+import SanityImage from "../components/SanityImage.astro";
+import GridItem from "../components/GridItem/index.astro";
+
+// GROQ query to fetch all inventory items with category data
+const INVENTORY_QUERY = `*[_type == "inventoryItem"] | order(_createdAt desc) {
+  _id,
+  name,
+  description,
+  image {
+    asset->{
+      _id,
+      url
+    },
+    alt
+  },
+  link,
+  datePurchased,
+  wishlist,
+  category->{
+    _id,
+    title,
+    image {
+      asset->{
+        _id,
+        url
+      },
+      alt
+    }
+  }
+}`;
+
+const { data: inventoryItems } = await loadQuery({
+  query: INVENTORY_QUERY,
+});
+---
+
+<Layout 
+  title="Inventory"
+  image="/favicon.svg"
+>
+  <main>
+    <div class="grid is-inventory">
+      {(inventoryItems as any[]).map((item: any) => (
+        <GridItem title={item.name} link={item.link} icon={item.category.image.asset.url}>
+          <div class="inventory-item_image-container">
+            {item.image && (
+              <img 
+                src={item.image.asset.url} 
+                alt={item.image.alt} 
+                class={`inventory_image ${item.category?.title === 'Apps' ? 'is-app' : ''}`}
+              />
+            )}
+          </div>
+        </GridItem>
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .inventory-item_image-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .inventory_image {
+    width: 80%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+
+  .inventory_image.is-app {
+    width: 70%;
+    max-width: 6.5rem !important;
+  }
+  
+</style>

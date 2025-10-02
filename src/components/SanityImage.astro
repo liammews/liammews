@@ -1,0 +1,67 @@
+---
+export interface Props {
+  image: {
+    asset?: {
+      url?: string;
+    };
+    alt?: string;
+  };
+  width?: number;
+  height?: number;
+  fit?: 'crop' | 'fill' | 'fillmax' | 'max' | 'scale' | 'min';
+  quality?: number;
+  format?: 'webp' | 'jpg' | 'png' | 'auto';
+  className?: string;
+  loading?: 'lazy' | 'eager';
+  sizes?: string;
+}
+
+const {
+  image,
+  width = 400,
+  height = 300,
+  fit = 'crop',
+  quality = 100,
+  format = 'auto',
+  className = '',
+  loading = 'lazy',
+  sizes = ''
+} = Astro.props;
+
+// Helper function to build Sanity image URL
+function buildImageUrl(
+  baseUrl: string,
+  width: number,
+  height: number,
+  fit: string,
+  quality: number,
+  format: string
+): string {
+  const params = new URLSearchParams({
+    w: width.toString(),
+    h: height.toString(),
+    fit,
+    q: quality.toString(),
+    format
+  });
+  return `${baseUrl}?${params.toString()}`;
+}
+
+// Get the image URL if available
+const imageUrl = image?.asset?.url 
+  ? buildImageUrl(image.asset.url, width, height, fit, quality, format)
+  : null;
+
+const altText = image?.alt || 'Image';
+---
+
+{imageUrl && (
+  <img 
+    src={imageUrl}
+    alt={altText}
+    class={className}
+    loading={loading}
+    sizes={sizes}
+    {...(!className && { width, height })}
+  />
+)}

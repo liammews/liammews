@@ -1,0 +1,209 @@
+---
+import "./button.css";
+
+interface Props {
+  ariaLabel?: string;
+  link?: string;
+  modalId?: string;
+  action?: 'open' | 'close';
+  tooltip?: string;
+  tooltipPosition?: 'top' | 'bottom' | 'left' | 'right';
+}
+
+const { ariaLabel, link, modalId, action = 'open', tooltip, tooltipPosition = 'top' } = Astro.props;
+---
+
+{link ? (
+  <a 
+    href={link} 
+    class="button" 
+    aria-label={ariaLabel}
+    data-tooltip={tooltip}
+    data-tooltip-position={tooltipPosition}
+  >
+    <slot />
+  </a>
+) : modalId ? (
+  <button 
+    class="button" 
+    aria-label={ariaLabel}
+    data-modal-action={action}
+    data-modal-id={modalId}
+    data-tooltip={tooltip}
+    data-tooltip-position={tooltipPosition}
+  >
+    <slot />
+  </button>
+) : (
+  <button 
+    class="button" 
+    aria-label={ariaLabel}
+    data-tooltip={tooltip}
+    data-tooltip-position={tooltipPosition}
+  >
+    <slot />
+  </button>
+)}
+
+<script>
+  // Handle modal button clicks and tooltip positioning
+  function initButton() {
+    // Create tooltip container if it doesn't exist
+    let tooltipContainer = document.getElementById('tooltip-container');
+    if (!tooltipContainer) {
+      tooltipContainer = document.createElement('div');
+      tooltipContainer.id = 'tooltip-container';
+      tooltipContainer.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 10000;
+      `;
+      document.body.appendChild(tooltipContainer);
+    }
+
+    // Handle modal button clicks
+    document.addEventListener('click', (e) => {
+      const button = (e.target as Element)?.closest('[data-modal-action]');
+      if (button) {
+        const action = (button as any).dataset.modalAction;
+        const modalId = (button as any).dataset.modalId;
+        
+        if (action === 'open' && (window as any)['showModal_' + modalId]) {
+          (window as any)['showModal_' + modalId]();
+        } else if (action === 'close' && (window as any)['hideModal_' + modalId]) {
+          (window as any)['hideModal_' + modalId]();
+        }
+      }
+    });
+
+    // Handle tooltip positioning
+    document.addEventListener('mouseenter', (e) => {
+      if (e.target && 'closest' in e.target) {
+        const button = (e.target as Element).closest('[data-tooltip]');
+        if (button && (button as any).dataset.tooltip) {
+          showTooltip(button, tooltipContainer);
+        }
+      }
+    }, true);
+
+    document.addEventListener('mouseleave', (e) => {
+      if (e.target && 'closest' in e.target) {
+        const button = (e.target as Element).closest('[data-tooltip]');
+        if (button && (button as any).dataset.tooltip) {
+          hideTooltip(tooltipContainer);
+        }
+      }
+    }, true);
+
+    document.addEventListener('focusin', (e) => {
+      if (e.target && 'closest' in e.target) {
+        const button = (e.target as Element).closest('[data-tooltip]');
+        if (button && (button as any).dataset.tooltip) {
+          showTooltip(button, tooltipContainer);
+        }
+      }
+    }, true);
+
+    document.addEventListener('focusout', (e) => {
+      if (e.target && 'closest' in e.target) {
+        const button = (e.target as Element).closest('[data-tooltip]');
+        if (button && (button as any).dataset.tooltip) {
+          hideTooltip(tooltipContainer);
+        }
+      }
+    }, true);
+  }
+
+  function showTooltip(button: any, container: any) {
+    const tooltipText = (button as any).dataset.tooltip;
+    const position = (button as any).dataset.tooltipPosition || 'top';
+    
+    // Remove existing tooltip
+    hideTooltip(container);
+    
+    // Create tooltip element
+    const tooltip = document.createElement('div');
+    tooltip.className = 'dynamic-tooltip';
+    tooltip.textContent = tooltipText;
+    tooltip.style.cssText = `
+      position: absolute;
+      background: var(--surface-foreground-idle);
+      color: var(--text-color-primary);
+      padding: 0.35rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: var(--font-size-xsmall);
+      font-weight: var(--font-weight-normal);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 10001;
+    `;
+    
+    container.appendChild(tooltip);
+    
+    // Position tooltip
+    const buttonRect = button.getBoundingClientRect();
+    const tooltipRect = tooltip.getBoundingClientRect();
+    
+    let top, left;
+    
+    switch (position) {
+      case 'top':
+        top = buttonRect.top - tooltipRect.height - 8;
+        left = buttonRect.left + (buttonRect.width / 2) - (tooltipRect.width / 2);
+        break;
+      case 'bottom':
+        top = buttonRect.bottom + 8;
+        left = buttonRect.left + (buttonRect.width / 2) - (tooltipRect.width / 2);
+        break;
+      case 'left':
+        top = buttonRect.top + (buttonRect.height / 2) - (tooltipRect.height / 2);
+        left = buttonRect.left - tooltipRect.width - 8;
+        break;
+      case 'right':
+        top = buttonRect.top + (buttonRect.height / 2) - (tooltipRect.height / 2);
+        left = buttonRect.right + 8;
+        break;
+    }
+    
+    // Keep tooltip within viewport
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    
+    if (left < 8) left = 8;
+    if (left + tooltipRect.width > viewportWidth - 8) {
+      left = viewportWidth - tooltipRect.width - 8;
+    }
+    if (top < 8) top = 8;
+    if (top + tooltipRect.height > viewportHeight - 8) {
+      top = viewportHeight - tooltipRect.height - 8;
+    }
+    
+    tooltip.style.top = top + 'px';
+    tooltip.style.left = left + 'px';
+    
+    // Show tooltip with delay
+    setTimeout(() => {
+      tooltip.style.opacity = '1';
+    }, 400);
+  }
+
+  function hideTooltip(container: any) {
+    const existingTooltip = (container as any).querySelector('.dynamic-tooltip');
+    if (existingTooltip) {
+      existingTooltip.remove();
+    }
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initButton);
+  } else {
+    initButton();
+  }
+</script>

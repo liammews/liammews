@@ -1,16 +1,106 @@
 ---
+import Layout from "../layouts/layout.astro";
+import GridItem from "../components/GridItem/index.astro"
+import WorkCard from "../components/WorkCard/index.astro"
 
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout 
+  title="Home - Liam Mews" 
+  description="Welcome to Liam Mews' personal website. Explore moments, inventory, and more."
+  image="/favicon.svg"
+>
+	<main>
+    <div class="grid">
+
+      <GridItem title="Liam Mews" description="Designer/Developer" titleStyle="center" link="/about" />
+
+      <WorkCard title="Typeform" description="2025" link="/typeform" image="" />
+
+      <GridItem title="Home Office - Late 2025" description="Featured" titleStyle="left-reverse" link="/writing/home-office-late-2025" />
+
+      <WorkCard title="Sky" description="2025" link="/sky" image="" />
+
+      <GridItem title="Moments" description="00" link="/moments" />
+
+      <WorkCard title="Good Design Tools" description="2023" link="/good-design-tools" image="" />
+
+      <GridItem title="London" description="10:10" titleStyle="left" />
+
+      <GridItem title="Inventory" description="00" link="/inventory" />
+
+      <div id="spotify-card">
+        <GridItem title="The Man I Need" description="Olivia Dean" titleStyle="center" link="#">
+          <div class="spotify-card_image-container">
+            <img id="spotify-image" src="" alt="" class="spotify-card_image" style="display: none;" />
+          </div>
+        </GridItem>
+      </div>
+
+
+    </div>
+	</main>
+</Layout>
+
+<style>
+  .spotify-card_image-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .spotify-card_image {
+    width: 70%;
+    max-width: 8rem;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+</style>
+
+<script>
+  // Fetch Spotify data on page load
+  async function loadSpotifyData() {
+    try {
+      const response = await fetch('/api/spotify.json');
+      if (response.ok) {
+        const data = await response.json();
+        
+        if (data.name && data.artist) {
+          // Update the title and description
+          const titleElement = document.querySelector('#spotify-card .grid-item_title p:first-child');
+          const descElement = document.querySelector('#spotify-card .grid-item_title p:last-child');
+          
+          if (titleElement) titleElement.textContent = data.name;
+          if (descElement) descElement.textContent = data.artist;
+          
+          // Update the image if available
+          if (data.image) {
+            const imgElement = document.getElementById('spotify-image');
+            imgElement.src = data.image;
+            imgElement.alt = `${data.name} by ${data.artist}`;
+            imgElement.style.display = 'block';
+          }
+          
+          // Update the link to the Spotify song
+          if (data.url) {
+            const linkElement = document.querySelector('#spotify-card .link-cover');
+            if (linkElement) {
+              linkElement.href = data.url;
+              linkElement.target = '_blank';
+              linkElement.rel = 'noopener noreferrer';
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Failed to fetch Spotify data:', error);
+    }
+  }
+
+  // Load Spotify data when page loads
+  loadSpotifyData();
+</script>

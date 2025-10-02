@@ -1,0 +1,17 @@
+---
+import Modal from "./index.astro";
+import Button from "../Button/index.astro";
+---
+
+<!-- Example usage of the modal component -->
+<Button modalId="example-modal" action="open" ariaLabel="Open example modal">
+  Open Modal
+</Button>
+
+<Modal id="example-modal" keyboardShortcut="m">
+  <div slot="title">Example Modal</div>
+  <p>This is the modal content. You can put anything here!</p>
+  <Button modalId="example-modal" action="close" ariaLabel="Close modal">
+    Close
+  </Button>
+</Modal>
