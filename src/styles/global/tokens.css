@@ -21,9 +21,9 @@
     --container-large: 50rem;
     --container-small: 35rem;
 
-    --border-radius-small: 0.75rem;
-    --border-radius-medium: 1rem;
-    --border-radius-large: 1.5rem;
+    --border-radius-small: 0.25rem;
+    --border-radius-medium: 0.25rem;
+    --border-radius-large: 0.25rem;
     --border-radius-full: 9999px;
 
     --text-size-small: 0.875rem;
@@ -50,7 +50,7 @@
 
     --scrim-background: rgba(0, 0, 0, 0.2);
 
-    --font-family-sans: "Suisse Intl", sans-serif;
+    --font-family-sans: "Sohne", "Söhne", -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
     --font-family-serif: "Merriweather", serif;
     --font-family-mono: "Suisse Intl Mono", monospace;
 
@@ -66,4 +66,6 @@
     --font-size-large: 1.125rem;
 
     --focus-color: var(--blue-600);
+
+    --ease-out-fun: cubic-bezier(0.22, 1, 0.36, 1);
 }

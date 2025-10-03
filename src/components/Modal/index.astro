@@ -54,6 +54,8 @@ const { id, keyboardShortcut } = Astro.props;
       previousActiveElement = document.activeElement;
       
       modal.style.display = 'block';
+      // Force a reflow to ensure the initial state is applied
+      modal.offsetHeight;
       modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
       
@@ -67,14 +69,21 @@ const { id, keyboardShortcut } = Astro.props;
 
     // Hide modal function
     function hideModal() {
-      modal.style.display = 'none';
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
+      // Add closing class to trigger animation
+      modal.classList.add('closing');
       
-      // Return focus to the previously focused element
-      if (previousActiveElement && previousActiveElement.focus) {
-        previousActiveElement.focus();
-      }
+      // Wait for animation to complete before hiding
+      setTimeout(() => {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+        modal.classList.remove('closing');
+        document.body.style.overflow = '';
+        
+        // Return focus to the previously focused element
+        if (previousActiveElement && previousActiveElement.focus) {
+          previousActiveElement.focus();
+        }
+      }, 200); // Match the closing transition duration
     }
 
     // Focus trap function

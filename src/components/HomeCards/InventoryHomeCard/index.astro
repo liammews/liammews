@@ -1,0 +1,43 @@
+---
+
+import GridItem from "../../GridItem/index.astro"
+import "./inventory-home-card.css"
+import { loadQuery } from "../../../sanity/lib/load-query"
+import { urlForImage } from "../../../sanity/lib/url-for-img"
+
+type InventoryItem = {
+  name: string
+  image?: any
+}
+
+const { data } = await loadQuery<InventoryItem[]>({
+  query: `*[_type == "inventoryItem"] | order(_createdAt desc)[0..2]{
+    name,
+    image
+  }`
+})
+
+const items = Array.isArray(data) ? data : []
+
+// Fetch total inventory count
+const { data: totalCount } = await loadQuery<number>({
+  query: 'count(*[_type == "inventoryItem"])'
+})
+
+const formattedCount = String(totalCount ?? 0).padStart(2, '0')
+
+---
+
+<GridItem title="Inventory" description={formattedCount} link="/inventory">
+    <div class="inventory-home-card_content">
+        {(items.length ? items : [null, null, null]).slice(0,3).map((item) => (
+            <div class="inventory-home-card_image-container">
+                {item?.image ? (
+                    <img src={urlForImage(item.image).url()} alt={item.name ?? 'Inventory item'} class="inventory-home-card_image" />
+                ) : (
+                    <img src="/images/inventory.png" alt="Inventory" />
+                )}
+            </div>
+        ))}
+    </div>
+</GridItem>

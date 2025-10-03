@@ -1,0 +1,83 @@
+.weather-card_content {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gutter);
+}
+
+.weather-card_track {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    position: relative;
+    background-color: var(--surface-background-idle);
+    border-radius: var(--border-radius-large);
+}
+
+.weather-card_humidity {
+    height: auto;
+    flex: 1 1 auto;
+}
+
+.weather-card_location {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    text-align: end;
+    font-size: var(--font-size-xsmall);
+}
+
+.weather-card_second-column {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gutter);
+}
+
+#weather-temperature-fill {
+    width: 100%;
+    background-color: #ffaf65;
+    border-radius: var(--border-radius-large);
+}
+
+#weather-card_humidity-fill {
+    width: 100%;
+    background-color: #3B96F1;
+    border-radius: var(--border-radius-large);
+}
+
+.weather-card_info-text {
+    font-size: var(--font-size-large);
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    z-index: 2;
+    color: white;
+}
+
+.weather-card_location {
+    background-color: var(--surface-background-idle);
+    border-radius: var(--border-radius-large);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--container-padding-small);
+}
+
+#weather-time {
+    font-size: 1.5rem;
+}
+
+#weather-location {
+    font-size: 0.6rem;
+    color: red;
+    font-weight: var(--font-weight-bold);
+}

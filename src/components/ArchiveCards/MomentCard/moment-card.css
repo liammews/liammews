@@ -1,0 +1,85 @@
+/* Moment Card */
+.moment-card {
+    cursor: zoom-in;
+    aspect-ratio: 1 / 1;
+    background-color: var(--surface-foreground-idle);
+    border-radius: var(--border-radius-large);
+    overflow: hidden;
+    padding: var(--container-padding-large);
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+        background-color: var(--surface-foreground-hover);
+    }
+}
+
+.moment-card_content {
+    width: 100%;
+    height: 100%;
+}
+
+.moment-card_image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: var(--border-radius-large);
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    cursor: zoom-out;
+}
+
+.lightbox[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox_scrim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FBFBFB;
+}
+
+.lightbox_content {
+    position: relative;
+    z-index: 1001;
+    max-width: 50rem;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    flex-direction: column;
+    gap: var(--container-padding-large);
+}
+
+.lightbox_image {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    max-width: 50rem;
+    object-fit: contain;
+}
+
+.lightbox_content_text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}

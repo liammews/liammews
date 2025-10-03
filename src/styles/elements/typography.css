@@ -5,3 +5,15 @@
 .text-color-muted {
     opacity: 0.7;
 }
+
+.text-size-xsmall {
+    font-size: var(--font-size-xsmall);
+}
+
+.text-color-primary {
+    color: var(--text-color-primary);
+}
+
+.text-size-large {
+    font-size: var(--font-size-large);
+}

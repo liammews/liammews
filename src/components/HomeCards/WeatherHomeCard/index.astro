@@ -1,0 +1,89 @@
+---
+
+import GridItem from "../../GridItem/index.astro"
+import "./weather-card.css"
+
+---
+
+<GridItem titleStyle="center">
+    <div class="weather-card_content">
+        <div class="weather-card_track">
+            <div class="weather-card_info-text">
+                <p id="weather-temp">00%</p>
+                <p class="text-size-xsmall">Temperature</p>
+            </div>
+            <div class="weather-card_temperature-fill" id="weather-temperature-fill" />
+        </div>
+        <div class="weather-card_second-column">
+
+            <div class="weather-card_location">
+                <p id="weather-location">London</p>
+                <p id="weather-time">10:10</p>
+            </div>
+            <div class="weather-card_track">
+                <div class="weather-card_info-text">
+                    <p id="weather-humidity">00%</p>
+                    <p class="text-size-xsmall">Humidity</p>
+                </div>
+				<div class="weather-card_humidity-fill" id="weather-card_humidity-fill" />
+            </div>
+        </div>
+    </div>
+</GridItem>
+
+<script>
+	async function loadLondonWeather() {
+		try {
+			const url = 'https://api.open-meteo.com/v1/forecast?latitude=51.5072&longitude=-0.1276&current=temperature_2m,relative_humidity_2m&timezone=Europe%2FLondon';
+			const response = await fetch(url, { cache: 'no-store' });
+			if (!response.ok) return;
+
+			const data = await response.json();
+			const current = data?.current;
+			if (!current) return;
+
+			const timeEl = document.getElementById('weather-time');
+			const tempEl = document.getElementById('weather-temp');
+			const humidityEl = document.getElementById('weather-humidity');
+			const humidityFillEl = document.getElementById('weather-card_humidity-fill');
+
+			// Update time using API-provided time in Europe/London
+			if (timeEl && current.time) {
+				const date = new Date(current.time);
+				const formatted = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit' }).format(date);
+				timeEl.textContent = formatted;
+			}
+
+			// Update temperature in °C and fill height (-10°C -> 0%, 35°C -> 100%)
+			if (typeof current.temperature_2m === 'number') {
+				const tempC = current.temperature_2m;
+				if (tempEl) {
+					tempEl.textContent = `${Math.round(tempC)}°C`;
+				}
+				const tempFillEl = document.getElementById('weather-temperature-fill');
+				if (tempFillEl) {
+					// Map -10..35°C to 0..100%
+					const minC = -10;
+					const maxC = 35;
+					const percent = Math.max(0, Math.min(100, ((tempC - minC) / (maxC - minC)) * 100));
+					tempFillEl.style.height = `${percent}%`;
+				}
+			}
+
+			// Update humidity percentage
+			if (typeof current.relative_humidity_2m === 'number') {
+				const humidityPercent = current.relative_humidity_2m;
+				if (humidityEl) {
+					humidityEl.textContent = `${humidityPercent}%`;
+				}
+				if (humidityFillEl) {
+					humidityFillEl.style.height = `${humidityPercent}%`;
+				}
+			}
+		} catch (err) {
+			console.error('Failed to load London weather', err);
+		}
+	}
+
+	loadLondonWeather();
+</script>

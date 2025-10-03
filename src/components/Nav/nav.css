@@ -2,8 +2,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: var(--margin);
-    padding-right: var(--margin);
     margin-bottom: 2rem;
     position: sticky;
     top: 2rem;

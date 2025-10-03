@@ -9,6 +9,7 @@
     position: relative;
     color: var(--text-colour-primary);
     transition: background-color 0.3s ease-in-out;
+    font-weight: var(--font-weight-bold);
 
     &:has(a):hover {
         background-color: var(--surface-foreground-hover);

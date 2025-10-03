@@ -1,7 +1,10 @@
 ---
 import Layout from "../layouts/layout.astro";
 import { loadQuery } from "../sanity/lib/load-query";
-import SanityImage from "../components/SanityImage.astro";
+import MomentCard from "../components/ArchiveCards/MomentCard/index.astro";
+import Modal from "../components/Modal/index.astro";
+import Button from "../components/Button/index.astro";
+import { Icon } from "astro-icon/components";
 
 // GROQ query to fetch all moments
 const MOMENTS_QUERY = `*[_type == "moments"] | order(_createdAt desc) {
@@ -25,22 +28,29 @@ const { data: moments } = await loadQuery({
   title="Moments"
   image="/favicon.svg"
 >
+  <div slot="nav">
+    <Button ariaLabel="Open Moments" modalId="moments" action="open" tooltip="⌘I">
+      <Icon name="info" />
+    </Button>
+  </div>
   <main>
-    <h1>Moments</h1>
-    <div>
+    <Modal id="moments" keyboardShortcut="i">
+      <div slot="title">What is this?</div>
+      <div>
+        <p>Moments</p>
+      </div>
+    </Modal>
+
+    <div class="grid">
       {(moments as any[]).map((moment: any) => (
         <div>
           {moment.image && (
-            <SanityImage 
-              image={{
-                ...moment.image,
-                alt: moment.image.alt || moment.name
-              }}
-              width={400}
-              height={300}
+            <MomentCard
+              title={moment.name}
+              image={moment.image.asset.url}
+              link={moment.link}
             />
           )}
-          <h2>{moment.name}</h2>
         </div>
       ))}
     </div>

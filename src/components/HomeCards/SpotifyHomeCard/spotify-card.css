@@ -1,0 +1,153 @@
+#spotify-card {
+  position: relative;
+}
+
+.spotify-card_content{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: calc(var(--container-padding-large) * 0.5);
+}
+
+.spotify-card_record-outer {
+  width: 100%;
+  max-width: 8rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 9999rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.125rem;
+  background: linear-gradient(to bottom, rgb(54, 54, 54), rgb(28, 28, 28));
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+
+.spotify-card_record-inner {
+  width: 100%;
+  max-width: 8rem;
+  aspect-ratio: 1 / 1;
+  background-color: black;
+  border-radius: 9999rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spotify-card_record-image {
+  width: 40%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 9999rem;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spotify-card_record-spindle {
+  width: 6px;
+  height: 6px;
+  background-color: black;
+  position: absolute;
+  border-radius: 9999rem;
+  z-index: 3;
+}
+
+.spotify-card_record-label {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: record-animation 10s linear infinite;
+  transition: animation-play-state 0.2s ease;
+}
+
+.spotify-card_record-label.paused {
+  animation-play-state: paused;
+}
+
+.spotify-card_record-highlight {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999rem;
+  background: conic-gradient(from 270deg at 50% 50%, rgba(0, 0, 0, 0.00) 0deg, #3F3F3F 90deg, rgba(0, 0, 0, 0.00) 180deg, #3F3F3F 270deg, rgba(0, 0, 0, 0.00) 360deg), #131313;
+}
+
+.spotify-card_grooves-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.spotify-card_groove {
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 9999rem;
+  aspect-ratio: 1 / 1;
+
+  &.is-first {
+    width: 60%;
+  }
+  
+  &.is-second {
+    width: 70%;
+  }
+
+  &.is-third {
+    width: 80%;
+  }
+
+  &.is-fourth {
+    width: 90%;
+  }
+}
+
+@keyframes record-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spotify-card_button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  font-size: 1.25rem;
+  border-radius: 50%;
+  background-color: #1db954;
+  color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 10;
+  transition: background-color 0.2s ease;
+}
+
+.spotify-card_button:hover {
+  background-color: #1ed760;
+} 

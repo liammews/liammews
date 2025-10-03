@@ -54,7 +54,9 @@ const visualEditingEnabled =
     <meta name="author" content="Liam Mews" />
     <link rel="canonical" href={url} />
   </head>
-  <Nav />
+  <Nav>
+    <slot name="nav" />
+  </Nav>
   <body>
     <slot />
     <VisualEditing enabled={visualEditingEnabled} />

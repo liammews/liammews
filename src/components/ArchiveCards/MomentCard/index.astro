@@ -1,0 +1,64 @@
+---
+import "./moment-card.css"
+
+interface Props {
+    title: string;
+    image: string;
+    link: string;
+}
+
+const { title, image } = Astro.props;
+---
+
+<div class="moment-card" data-lightbox-trigger>
+    <div class="moment-card_content">
+        <img src={image} alt={title} class="moment-card_image" />
+    </div>
+</div>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox_scrim" data-lightbox-close></div>
+    <div class="lightbox_content">
+        <img src={image} alt={title} class="lightbox_image" />
+        <div class="lightbox_content_text">
+            <p>{title}.webp</p>
+            <p class="text-color-muted text-size-xsmall"> Click to close</p>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function setupLightbox() {
+        const trigger = document.querySelector('[data-lightbox-trigger]');
+        const lightbox = document.getElementById('lightbox');
+        const closeButtons = document.querySelectorAll('[data-lightbox-close]');
+        
+        if (!trigger || !lightbox) return;
+        
+        // Open lightbox
+        trigger.addEventListener('click', () => {
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Close lightbox
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                lightbox.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.getAttribute('aria-hidden') === 'false') {
+                lightbox.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+    
+    setupLightbox();
+</script>

@@ -12,6 +12,20 @@ export const momentsType: SchemaTypeDefinition = {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "name",
+      },
+    },
+    {
+      name: "date",
+      title: "Date",
+      type: "date",
+      validation: (Rule) => Rule.required(),
+    },
+        {
       name: "image",
       title: "Image",
       type: "image",

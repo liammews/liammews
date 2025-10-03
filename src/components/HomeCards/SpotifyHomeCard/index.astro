@@ -1,0 +1,104 @@
+---
+import GridItem from "../../GridItem/index.astro"
+import "./spotify-card.css"
+import { Icon } from "astro-icon/components";
+
+---
+
+<div id="spotify-card">
+  <GridItem title="The Man I Need" description="Olivia Dean" titleStyle="center">
+    <div class="spotify-card_content">
+        <div class="spotify-card_record-outer">
+            <div class="spotify-card_record-inner">
+                <div class="spotify-card_record-image">
+                    <div class="spotify-card_record-spindle" />
+                    <img id="spotify-image" src="" alt="" class="spotify-card_record-label" style="display: none;" />
+                </div>
+    
+                <div class="spotify-card_record-highlight" />
+
+                <div class="spotify-card_grooves-container">
+                    <div class="spotify-card_groove is-first" />
+                    <div class="spotify-card_groove is-second" />
+                    <div class="spotify-card_groove is-third" />
+                    <div class="spotify-card_groove is-fourth" />
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <a id="spotify-link" href="#" class="spotify-card_button" target="_blank" rel="noopener noreferrer">
+        <Icon name="spotify-logo-fill" />
+    </a>
+  </GridItem>
+</div>
+
+<script>
+  // Fetch Spotify data on page load
+  async function loadSpotifyData() {
+    try {
+      const response = await fetch('/api/spotify.json');
+      if (response.ok) {
+        const data = await response.json();
+        
+        if (data.name && data.artist) {
+          // Update the title and description
+          const titleElement = document.querySelector('#spotify-card .grid-item_title p:first-child');
+          const descElement = document.querySelector('#spotify-card .grid-item_title p:last-child');
+          
+          if (titleElement) titleElement.textContent = data.name;
+          if (descElement) descElement.textContent = data.artist;
+          
+          // Update the image if available
+          if (data.image) {
+            const imgElement = document.getElementById('spotify-image') as HTMLImageElement;
+            if (imgElement) {
+              imgElement.src = data.image;
+              imgElement.alt = `${data.name} by ${data.artist}`;
+              imgElement.style.display = 'block';
+            }
+          }
+          
+          // Update the link to the Spotify song
+          if (data.url) {
+            const linkElement = document.getElementById('spotify-link') as HTMLAnchorElement;
+            if (linkElement) {
+              linkElement.href = data.url;
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Failed to fetch Spotify data:', error);
+    }
+  }
+
+  // Load Spotify data when page loads
+  loadSpotifyData();
+
+  // Add mouse handlers to pause/resume record animation
+  function setupRecordMouseHandlers() {
+    const recordOuter = document.querySelector('.spotify-card_record-outer');
+    const recordLabel = document.getElementById('spotify-image');
+    
+    if (recordOuter && recordLabel) {
+      // Pause animation on mouse down
+      recordOuter.addEventListener('mousedown', () => {
+        recordLabel.classList.add('paused');
+      });
+      
+      // Resume animation on mouse up
+      recordOuter.addEventListener('mouseup', () => {
+        recordLabel.classList.remove('paused');
+      });
+      
+      // Resume animation if mouse leaves element while pressed
+      recordOuter.addEventListener('mouseleave', () => {
+        recordLabel.classList.remove('paused');
+      });
+    }
+  }
+
+  // Setup mouse handlers when page loads
+  setupRecordMouseHandlers();
+</script>
