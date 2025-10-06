@@ -30,6 +30,8 @@
         margin-bottom: 1rem;
         line-height: var(--line-height-relaxed);
         color: var(--text-color-secondary);
+        text-wrap: pretty;
+
 
         &:last-child {
             margin-bottom: 0;

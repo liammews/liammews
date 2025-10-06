@@ -11,7 +11,7 @@ const { title, image } = Astro.props;
 const lightboxId = `lightbox-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
-<div class="moment-card" data-lightbox-trigger data-lightbox-id={lightboxId}>
+<div class="moment-card intro-in" data-lightbox-trigger data-lightbox-id={lightboxId}>
     <div class="moment-card_content">
         <img src={image} alt={title} loading="lazy" class="moment-card_image" />
     </div>

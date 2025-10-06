@@ -38,4 +38,5 @@
     align-items: flex-start;
     justify-content: space-between;
     padding-top: var(--container-padding-small);
+    gap: var(--gutter);
 }

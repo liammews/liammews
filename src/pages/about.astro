@@ -1,0 +1,73 @@
+---
+import Layout from "../layouts/layout.astro";
+import { loadQuery } from "../sanity/lib/load-query";
+import PortableText from "../components/PortableText.astro";
+import Resume from "../components/Resume/index.astro";
+
+type Bio = {
+  name: string;
+  content?: any[];
+}
+
+const { data: bios } = await loadQuery<Bio[]>({
+  query: `*[_type == "bio"] | order(name asc) {
+    name,
+    content
+  }`
+});
+
+const bioMap = new Map(bios?.map(bio => [bio.name, bio]) || []);
+
+// Debug: Log the fetched data
+console.log('Fetched bios:', bios);
+console.log('Bio map:', bioMap);
+---
+
+<Layout title="About" description="About Liam Mews">
+
+    <div class="intro-in">
+        <section class="section about_section">
+            <h2 class="about_section-title">Now</h2>
+            <div class="rich-text">
+                {bioMap.get("Now")?.content && (
+                    <PortableText portableText={bioMap.get("Now")?.content} />
+                )}
+            </div>
+        </section>
+        <section class="section about_section">
+            <h2 class="about_section-title">Previously</h2>
+            <div class="rich-text">
+                {bioMap.get("Previously")?.content && (
+                    <PortableText portableText={bioMap.get("Previously")?.content} />
+                )}
+            </div>
+        </section>
+    
+        <section class="section about_section">
+            <h2 class="about_section-title">Out of office</h2>
+            <div class="rich-text">
+                {bioMap.get("Out of office")?.content && (
+                    <PortableText portableText={bioMap.get("Out of office")?.content} />
+                )}
+            </div>
+        </section>
+    
+        <section class="section about_section">
+            <h2 class="about_section-title">Résumé</h2>
+            <Resume />
+        </section>
+    </div>
+
+
+</Layout>
+
+<style>
+
+    .about_section-title {
+        font-size: var(--font-size-medium);
+        font-weight: var(--font-weight-bold);
+        margin-bottom: 1rem;
+    }
+
+
+</style>

@@ -13,17 +13,17 @@ interface Props {
 const { title, image, link, description, category } = Astro.props;
 ---
 
-<a href={link} target="_blank" rel="noopener noreferrer" class="inventory-card">
+<a href={link} target="_blank" rel="noopener noreferrer" class="inventory-card intro-in">
     <div class="inventory-card_image-container">
         <img src={image} alt={title} class="inventory-card_image" />
     </div>
     <div class="inventory-card_content">
         <div>
             <p>{title}</p>
-            <p class="text-color-muted">{description}</p>
+            <p class="text-color-muted text-size-xsmall">{description}</p>
         </div>
 
-        <p class="text-color-muted">
+        <p class="text-color-muted" style="flex-shrink: 0;">
             {category}
         </p>
     </div>

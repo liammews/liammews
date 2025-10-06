@@ -131,11 +131,11 @@ const { ariaLabel, link, modalId, action = 'open', tooltip, tooltipPosition = 't
     tooltip.textContent = tooltipText;
     tooltip.style.cssText = `
       position: absolute;
-      background: var(--surface-foreground-idle);
-      color: var(--text-color-primary);
-      padding: 0.35rem 0.5rem;
+      background: var(--surface-inverse);
+      color: var(--text-color-inverse);
+      padding: 0.125rem 0.35rem;
       border-radius: var(--border-radius-small);
-      font-size: var(--font-size-xsmall);
+      font-size: 0.75rem;
       font-weight: var(--font-weight-normal);
       white-space: nowrap;
       pointer-events: none;
@@ -143,6 +143,11 @@ const { ariaLabel, link, modalId, action = 'open', tooltip, tooltipPosition = 't
       transition: opacity 0.2s ease;
       z-index: 10001;
     `;
+    
+    // Add arrow element
+    const arrow = document.createElement('div');
+    arrow.className = 'tooltip-arrow';
+    tooltip.appendChild(arrow);
     
     container.appendChild(tooltip);
     
@@ -187,10 +192,54 @@ const { ariaLabel, link, modalId, action = 'open', tooltip, tooltipPosition = 't
     tooltip.style.top = top + 'px';
     tooltip.style.left = left + 'px';
     
+    // Position arrow based on tooltip position
+    arrow.style.cssText = `
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 4px solid transparent;
+      z-index: 10002;
+    `;
+    
+    switch (position) {
+      case 'top':
+        arrow.style.cssText += `
+          border-top-color: var(--surface-inverse);
+          bottom: -8px;
+          left: 50%;
+          transform: translateX(-50%);
+        `;
+        break;
+      case 'bottom':
+        arrow.style.cssText += `
+          border-bottom-color: var(--surface-inverse);
+          top: -8px;
+          left: 50%;
+          transform: translateX(-50%);
+        `;
+        break;
+      case 'left':
+        arrow.style.cssText += `
+          border-left-color: var(--surface-inverse);
+          right: -7.5px;
+          top: 50%;
+          transform: translateY(-50%);
+        `;
+        break;
+      case 'right':
+        arrow.style.cssText += `
+          border-right-color: var(--surface-inverse);
+          left: -7.5px;
+          top: 50%;
+          transform: translateY(-50%);
+        `;
+        break;
+    }
+    
     // Show tooltip with delay
     setTimeout(() => {
       tooltip.style.opacity = '1';
-    }, 400);
+    }, 600);
   }
 
   function hideTooltip(container: any) {

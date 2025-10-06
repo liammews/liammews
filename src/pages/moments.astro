@@ -27,7 +27,6 @@ const { data: moments } = await loadQuery({
 
 <Layout 
   title="Moments"
-  image="/favicon.svg"
 >
   <div slot="nav">
     <Button ariaLabel="What is this?" modalId="moments" action="open" tooltip="⌘I">
@@ -42,7 +41,7 @@ const { data: moments } = await loadQuery({
       </div>
     </Modal>
 
-    <div class="grid intro-in">
+    <div class="grid">
       {(moments as any[]).map((moment: any) => (
         <div>
           {moment.image && (

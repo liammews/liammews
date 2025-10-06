@@ -3,6 +3,7 @@ import Layout from "../layouts/layout.astro";
 import { loadQuery } from "../sanity/lib/load-query";
 import PortableText from "../components/PortableText.astro";
 import LinkCard from "../components/LinkCard/index.astro";
+import Resume from "../components/Resume/index.astro";
 
 // GROQ query to fetch the short bio document
 const BIO_QUERY = `*[_type == "bio" && name == "Short Bio"][0] {
@@ -17,8 +18,7 @@ const { data: bio } = await loadQuery<{ name: string; content: any[] }>({
 ---
 
 <Layout 
-  title="Home - Liam Mews" 
-  description="Welcome to Liam Mews' personal website. Explore moments, inventory, and more."
+  title="Liam Mews" 
   image="/favicon.svg"
 >
 	<main class="intro-in">
@@ -44,12 +44,10 @@ const { data: bio } = await loadQuery<{ name: string; content: any[] }>({
 
     <section class="section">
       <h2 style="margin-bottom: 2rem;" class="text-size-normal font-weight-normal">Résumé</h2>
-      <div class="list">
-        <LinkCard link="https://www.makebuild.studio" image="/makebuild.svg" title="Webflow Project Lead @ MakeBuild" description="2023 - Present" />
-        <LinkCard link="https://www.liammews.com/" image="/mews.svg" title="Independent Design Engineer" description="2022 - Present" />
-        <LinkCard link="https://www.savills.com/" image="/savills.svg" title="In-House Designer @ Savills" description="2016 - 2022" />
-      </div>
+      <Resume />
     </section>
+
+
 
     <section class="section">
       <h2 style="margin-bottom: 2rem;" class="text-size-normal font-weight-normal">Content</h2>
