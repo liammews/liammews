@@ -8,9 +8,9 @@ import NavItem from "./NavItem.astro";
 
 
 <header class="nav_container">
-    <Button ariaLabel="Navigate to home" link="/">
-        <Icon name="logo" />
-    </Button>
+    <a aria-label="Navigate to home" href="/">
+        <Icon name="logo" height={32} width={32} />
+    </a>
 
     <div class="nav_button-group">
         <slot />
@@ -25,9 +25,6 @@ import NavItem from "./NavItem.astro";
         <nav>
             <ul class="nav_menu">
                 <NavItem link="/">Index</NavItem>
-                <NavItem link="/about">Projects</NavItem>
-                <NavItem link="/contact">About me</NavItem>
-                <NavItem link="/writing">Writing</NavItem>
                 <NavItem link="/moments">Moments</NavItem>
                 <NavItem link="/inventory">Inventory</NavItem>
             </ul>

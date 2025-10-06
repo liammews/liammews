@@ -1,0 +1,44 @@
+---
+import { Icon } from "astro-icon/components";
+import "./link-card.css";
+
+interface Props {
+    link: string;
+    icon?: string;
+    title: string;
+    description: string;
+    image?: string;
+    isExternal?: boolean;
+}
+
+const { link, icon, title, description, image, isExternal = false } = Astro.props;
+
+// Determine if link is external based on isExternal prop or URL analysis
+const isExternalLink = isExternal || link.startsWith('http');
+
+// Set appropriate attributes for external vs internal links
+const linkAttributes = isExternalLink 
+    ? { target: '_blank', rel: 'noopener noreferrer' }
+    : {};
+---
+
+<div class="link-card">
+    <a href={link} aria-label={`Navigate to ${title}`} class={`link-card_container ${isExternalLink ? 'is-external' : ''}`} {...linkAttributes}>
+
+        {icon && 
+            <div class="link-card_icon-container">
+                <Icon name={icon} width={20} height={20} />
+            </div>
+            }
+            {image &&
+             <div class="link-card_icon-container is-dark">
+                <img src={image} loading="lazy" alt={title} class="link-card_icon" />
+            </div>
+            }
+
+        <div class="link-card_content">
+            <p>{title}</p>
+            <p class="text-color-secondary">{description}</p>
+        </div>
+    </a>
+</div>

@@ -3,10 +3,10 @@
     cursor: zoom-in;
     aspect-ratio: 1 / 1;
     background-color: var(--surface-foreground-idle);
-    border-radius: var(--border-radius-large);
     overflow: hidden;
-    padding: var(--container-padding-large);
+    padding: 2.5rem;
     transition: background-color 0.3s ease-in-out;
+    border-radius: var(--border-radius-small);
 
     &:hover {
         background-color: var(--surface-foreground-hover);
@@ -22,7 +22,6 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    border-radius: var(--border-radius-large);
 }
 
 /* Lightbox */

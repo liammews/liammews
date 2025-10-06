@@ -12,15 +12,24 @@ html {
 }
 
 ::selection {
-    background-color: var(--surface-foreground-active);
-    color: var(--text-color-inverse);
+    background-color: var(--blue-100);
+    color: var(--blue-600);
 }
 
 body {
     max-width: var(--container-large);
     margin: 4rem auto;
     padding: var(--margin);
-    font-weight: 500;
+
+    @media (max-width: 420px) {
+        margin: 0rem auto !important;
+        padding-top: 0rem !important;
+        padding-bottom: 6rem;
+    }
+}
+
+p {
+    line-height: var(--line-height-relaxed);
 }
 
 :where(h1, h2, h3, h4, h5, h6, p) {

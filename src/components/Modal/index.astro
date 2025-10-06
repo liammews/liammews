@@ -57,7 +57,10 @@ const { id, keyboardShortcut } = Astro.props;
       // Force a reflow to ensure the initial state is applied
       modal.offsetHeight;
       modal.setAttribute('aria-hidden', 'false');
+      
+      // Prevent background scrolling while preserving scrollbar space
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.borderRight = '15px solid transparent';
       
       // Focus the modal
       setTimeout(() => {
@@ -77,13 +80,16 @@ const { id, keyboardShortcut } = Astro.props;
         modal.style.display = 'none';
         modal.setAttribute('aria-hidden', 'true');
         modal.classList.remove('closing');
+        
+        // Restore body and html styles
         document.body.style.overflow = '';
+        document.documentElement.style.borderRight = '';
         
         // Return focus to the previously focused element
         if (previousActiveElement && previousActiveElement.focus) {
           previousActiveElement.focus();
         }
-      }, 200); // Match the closing transition duration
+      }, 300); // Match the closing transition duration
     }
 
     // Focus trap function

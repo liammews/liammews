@@ -6,7 +6,8 @@ import { blogPostType } from "./blogPost";
 import { momentsType } from "./moments";
 import { inventoryCategoryType } from "./inventoryCategory";
 import { inventoryItemType } from "./inventoryItem";
+import { bioType } from "./bio";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, blogCategoryType, blogPostType, momentsType, inventoryCategoryType, inventoryItemType],
+  types: [blockContentType, blogCategoryType, blogPostType, momentsType, inventoryCategoryType, inventoryItemType, bioType],
 };

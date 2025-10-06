@@ -2,10 +2,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    margin-bottom: 6rem;
     position: sticky;
-    top: 2rem;
+    top: 0;
     z-index: 100;
+    background-color: var(--surface-background-idle);
+
+    @media (max-width: 420px) {
+        padding-top: 1rem;
+        margin-bottom: 0rem;
+    }
 }
 
 .nav_button-group{
@@ -53,4 +61,9 @@
         background-color: var(--surface-background-active);
         color: var(--text-color-primary);
     }
+}
+
+.nav_logo {
+    height: 2.75rem;
+    width: 2.75rem;
 }

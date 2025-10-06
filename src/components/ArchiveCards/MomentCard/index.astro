@@ -8,19 +8,20 @@ interface Props {
 }
 
 const { title, image } = Astro.props;
+const lightboxId = `lightbox-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
-<div class="moment-card" data-lightbox-trigger>
+<div class="moment-card" data-lightbox-trigger data-lightbox-id={lightboxId}>
     <div class="moment-card_content">
-        <img src={image} alt={title} class="moment-card_image" />
+        <img src={image} alt={title} loading="lazy" class="moment-card_image" />
     </div>
 </div>
 
 <!-- Lightbox Modal -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="lightbox_scrim" data-lightbox-close></div>
+<div class="lightbox" id={lightboxId} role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox_scrim" data-lightbox-close data-lightbox-id={lightboxId}></div>
     <div class="lightbox_content">
-        <img src={image} alt={title} class="lightbox_image" />
+        <img src={image} alt={title} loading="lazy" class="lightbox_image" />
         <div class="lightbox_content_text">
             <p>{title}.webp</p>
             <p class="text-color-muted text-size-xsmall"> Click to close</p>
@@ -29,13 +30,13 @@ const { title, image } = Astro.props;
     </div>
 </div>
 
-<script>
+<script define:vars={{ lightboxId }}>
     function setupLightbox() {
-        const trigger = document.querySelector('[data-lightbox-trigger]');
-        const lightbox = document.getElementById('lightbox');
-        const closeButtons = document.querySelectorAll('[data-lightbox-close]');
+        const trigger = document.querySelector(`[data-lightbox-id="${lightboxId}"]`);
+        const lightbox = document.getElementById(lightboxId);
+        const closeButton = document.querySelector(`[data-lightbox-close][data-lightbox-id="${lightboxId}"]`);
         
-        if (!trigger || !lightbox) return;
+        if (!trigger || !lightbox || !closeButton) return;
         
         // Open lightbox
         trigger.addEventListener('click', () => {
@@ -44,11 +45,9 @@ const { title, image } = Astro.props;
         });
         
         // Close lightbox
-        closeButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                lightbox.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-            });
+        closeButton.addEventListener('click', () => {
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
         });
         
         // Close on escape key

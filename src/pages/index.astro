@@ -1,11 +1,19 @@
 ---
 import Layout from "../layouts/layout.astro";
-import GridItem from "../components/GridItem/index.astro"
-import WorkHomeCard from "../components/HomeCards/WorkHomeCard/index.astro"
-import SpotifyHomeCard from "../components/HomeCards/SpotifyHomeCard/index.astro"
-import WeatherHomeCard from "../components/HomeCards/WeatherHomeCard/index.astro"
-import InventoryHomeCard from "../components/HomeCards/InventoryHomeCard/index.astro"
+import { loadQuery } from "../sanity/lib/load-query";
+import PortableText from "../components/PortableText.astro";
+import LinkCard from "../components/LinkCard/index.astro";
 
+// GROQ query to fetch the short bio document
+const BIO_QUERY = `*[_type == "bio" && name == "Short Bio"][0] {
+  _id,
+  name,
+  content
+}`;
+
+const { data: bio } = await loadQuery<{ name: string; content: any[] }>({
+  query: BIO_QUERY,
+});
 ---
 
 <Layout 
@@ -13,28 +21,42 @@ import InventoryHomeCard from "../components/HomeCards/InventoryHomeCard/index.a
   description="Welcome to Liam Mews' personal website. Explore moments, inventory, and more."
   image="/favicon.svg"
 >
-	<main>
-    <div class="grid">
+	<main class="intro-in">
+    <section style="padding: 4rem 0;">
+      <h1 class="text-size-normal font-weight-normal">Liam Mews</h1>
+      <p style="margin-bottom: 2.5rem;" class="text-color-muted">Designer/Developer</p>
 
-      <GridItem title="Liam Mews" description="Designer/Developer" titleStyle="center" link="/about" />
+      {bio && bio.content && (
+        <div class="rich-text">
+          <PortableText portableText={bio.content} />
+        </div>
+      )}
+    </section>
 
-      <WorkHomeCard title="Typeform" description="2025" link="/typeform" image="" />
+    <section class="section">
+      <h2 style="margin-bottom: 2rem;" class="text-size-normal font-weight-normal">Recent Work</h2>
+      <div class="list">
+        <LinkCard link="https://www.typeform.com/" image="/typeform.svg" title="Typeform x MakeBuild" description="Supporting a site migration to Webflow with a multi-platform design system." />
+        <LinkCard link="https://www.sky.com/" image="/sky.svg" title="Sky x MakeBuild" description="Empowering a in-house web team with a Webflow design system." />
+        <LinkCard link="https://www.gooddesign.tools/" image="/gdt.svg" title="Good Design Tools" description="An online collection of the best tools and resources for designers." />  
+      </div>
+    </section>
 
-      <GridItem title="Home Office - Late 2025" description="Featured" titleStyle="left-reverse" link="/writing/home-office-late-2025" />
+    <section class="section">
+      <h2 style="margin-bottom: 2rem;" class="text-size-normal font-weight-normal">Résumé</h2>
+      <div class="list">
+        <LinkCard link="https://www.makebuild.studio" image="/makebuild.svg" title="Webflow Project Lead @ MakeBuild" description="2023 - Present" />
+        <LinkCard link="https://www.liammews.com/" image="/mews.svg" title="Independent Design Engineer" description="2022 - Present" />
+        <LinkCard link="https://www.savills.com/" image="/savills.svg" title="In-House Designer @ Savills" description="2016 - 2022" />
+      </div>
+    </section>
 
-      <WorkHomeCard title="Sky" description="2025" link="/sky" image="" />
-
-      <GridItem title="Moments" description="00" link="/moments" />
-
-      <WorkHomeCard title="Good Design Tools" description="2023" link="/good-design-tools" image="" />
-
-      <WeatherHomeCard />
-
-      <InventoryHomeCard />
-
-      <SpotifyHomeCard />
-
-
-    </div>
+    <section class="section">
+      <h2 style="margin-bottom: 2rem;" class="text-size-normal font-weight-normal">Content</h2>
+      <div class="list">
+        <LinkCard link="/moments" icon="image" title="Moments" description="A collection of moments" />
+        <LinkCard link="/inventory" icon="grid" title="Inventory" description="Well-designed products I own" />
+      </div>
+    </section>
 	</main>
 </Layout>

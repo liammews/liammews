@@ -1,17 +1,17 @@
 :root {
     --neutral-25: #ffffff;
-    --neutral-50: #f4f4f4;
-    --neutral-100: #EDECEC;
+    --neutral-50: #f8f8f8;
+    --neutral-100: #f3f3f3;
     --neutral-200: #E0DEDE;
     --neutral-300: #999898;
-    --neutral-400: #A7A6A6;
-    --neutral-500: #575656;
+    --neutral-400: #8f8f8f;
+    --neutral-500: #626262;
     --neutral-600: #575656;
     --neutral-700: #393838;
     --neutral-800: #292828;
     --neutral-900: #171717;
     --neutral-1000: #0f0f0f;
 
-    --blue-100: #bfd5f5;
+    --blue-100: #f1f6ff;
     --blue-600: #2563eb;
 }

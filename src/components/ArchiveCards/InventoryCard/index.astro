@@ -1,0 +1,30 @@
+---
+
+import "./inventory-card.css"
+
+interface Props {
+    title: string;
+    image: string;
+    link: string;
+    description: string;
+    category: string;
+}
+
+const { title, image, link, description, category } = Astro.props;
+---
+
+<a href={link} target="_blank" rel="noopener noreferrer" class="inventory-card">
+    <div class="inventory-card_image-container">
+        <img src={image} alt={title} class="inventory-card_image" />
+    </div>
+    <div class="inventory-card_content">
+        <div>
+            <p>{title}</p>
+            <p class="text-color-muted">{description}</p>
+        </div>
+
+        <p class="text-color-muted">
+            {category}
+        </p>
+    </div>
+</a>

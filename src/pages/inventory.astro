@@ -1,8 +1,10 @@
 ---
 import Layout from "../layouts/layout.astro";
 import { loadQuery } from "../sanity/lib/load-query";
-import SanityImage from "../components/SanityImage.astro";
-import GridItem from "../components/GridItem/index.astro";
+import InventoryCard from "../components/ArchiveCards/InventoryCard/index.astro";
+import Button from "../components/Button/index.astro";
+import { Icon } from "astro-icon/components";
+import Modal from "../components/Modal/index.astro";
 
 // GROQ query to fetch all inventory items with category data
 const INVENTORY_QUERY = `*[_type == "inventoryItem"] | order(_createdAt desc) {
@@ -41,20 +43,24 @@ const { data: inventoryItems } = await loadQuery({
   title="Inventory"
   image="/favicon.svg"
 >
+<div slot="nav">
+  <Button ariaLabel="What is this?" modalId="inventory" action="open" tooltip="⌘I">
+    <Icon name="info" />
+  </Button>
+</div>
+
   <main>
-    <div class="grid is-inventory">
+    <Modal id="inventory" keyboardShortcut="i">
+      <div slot="title">What is this?</div>
+      <div class="rich-text modal_body-content">
+        <p>A page to collate and share my favourite essential. I like to think of myself as an essentialist, I try to keep my list of belongings pretty small but invest in high-quality things that will serve me well for many years.</p>
+        <p>This list isn't everything I own/use, but things I would buy again in a heartbeat.</p>
+      </div>
+    </Modal>
+
+    <div class="grid intro-in">
       {(inventoryItems as any[]).map((item: any) => (
-        <GridItem title={item.name} link={item.link} icon={item.category.image.asset.url}>
-          <div class="inventory-item_image-container">
-            {item.image && (
-              <img 
-                src={item.image.asset.url} 
-                alt={item.image.alt} 
-                class={`inventory_image ${item.category?.title === 'Apps' ? 'is-app' : ''}`}
-              />
-            )}
-          </div>
-        </GridItem>
+        <InventoryCard title={item.name} image={item.image.asset.url} link={item.link} description={item.description} category={item.category.title} />
       ))}
     </div>
   </main>

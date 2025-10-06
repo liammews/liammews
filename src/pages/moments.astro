@@ -7,9 +7,10 @@ import Button from "../components/Button/index.astro";
 import { Icon } from "astro-icon/components";
 
 // GROQ query to fetch all moments
-const MOMENTS_QUERY = `*[_type == "moments"] | order(_createdAt desc) {
+const MOMENTS_QUERY = `*[_type == "moments"] | order(date desc) {
   _id,
   name,
+  date,
   image {
     asset->{
       _id,
@@ -29,19 +30,19 @@ const { data: moments } = await loadQuery({
   image="/favicon.svg"
 >
   <div slot="nav">
-    <Button ariaLabel="Open Moments" modalId="moments" action="open" tooltip="⌘I">
+    <Button ariaLabel="What is this?" modalId="moments" action="open" tooltip="⌘I">
       <Icon name="info" />
     </Button>
   </div>
   <main>
     <Modal id="moments" keyboardShortcut="i">
       <div slot="title">What is this?</div>
-      <div>
-        <p>Moments</p>
+      <div class="rich-text modal_body-content">
+        <p>I like to capture moments with photos but have lost interest in social media. This is a page to collect some of my favourite moments.</p>
       </div>
     </Modal>
 
-    <div class="grid">
+    <div class="grid intro-in">
       {(moments as any[]).map((moment: any) => (
         <div>
           {moment.image && (

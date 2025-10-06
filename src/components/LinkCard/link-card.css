@@ -1,0 +1,59 @@
+.link-card_container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    border-radius: var(--border-radius-large);
+    padding: var(--container-padding-small);
+    margin: 0rem calc(var(--container-padding-small) * -1);
+    color: var(--text-color-primary);
+    font-size: var(--font-size-small);
+    transition: background-color 0.3s ease-out;
+
+    &:hover {
+        background-color: var(--surface-foreground-hover);
+    }
+
+    &:active {
+        background-color: var(--surface-foreground-active);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--focus-color);
+        outline-offset: 2px;
+    }
+}
+
+.link-card_icon-container {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface-foreground-idle);
+    border-radius: var(--border-radius-medium);
+    z-index: 2;
+
+    &.is-dark {
+        background-color: var(--surface-inverse);
+    }
+}
+
+.link-card_icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    pointer-events: none;
+}
+
+.link-card_content {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--text-color-primary);
+    flex: 1;
+        z-index: 2;
+}
+
+.link-card_container.is-external {
+    position: relative;
+}

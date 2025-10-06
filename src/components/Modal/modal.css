@@ -6,7 +6,7 @@
   width: 100%;
   height: 100%;
   background: var(--scrim-background);
-  z-index: 1000;
+  z-index: 10002;
   display: none;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -22,7 +22,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.9);
   background: var(--surface-background-idle);
   border-radius: var(--border-radius-medium);
   max-width: 22rem;
@@ -30,19 +30,26 @@
   max-height: 25rem;
   overflow-y: auto;
   opacity: 0;
-  transform: translate(-50%, calc(-50% + 40px));
   transition: opacity 0.3s ease, transform 0.6s var(--ease-out-fun);
+  
+  /* Hide scrollbar while maintaining scroll functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.modal-content::-webkit-scrollbar {
+  display: none; /* WebKit browsers (Chrome, Safari, Edge) */
 }
 
 .modal[aria-hidden="false"] .modal-content {
   opacity: 1;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .modal.closing .modal-content {
   opacity: 0;
-  transform: translate(-50%, calc(-50% + 40px));
-  transition: opacity 0.1s ease-out, transform 0.3s ease-out;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 
 /* Modal Header */
@@ -51,20 +58,29 @@
   justify-content: space-between;
   align-items: center;
   padding: var(--container-padding-small);
+  position: sticky;
+  top: 0;
+  background-color: var(--surface-background-idle);
+  z-index: 10003;
 }
 
 .modal-title {
   font-weight: var(--font-weight-bold);
   color: var(--text-color-secondary);
-  padding-left: var(--container-padding-small);
+  padding-left: .5rem;
   font-size: var(--font-size-small);
 }
 
 /* Modal Body */
 .modal-body {
   padding-top: var(--container-padding-large);
-  padding-left: var(--container-padding-small);
-  padding-right: var(--container-padding-small);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   padding-bottom: var(--container-padding-large);
   font-size: var(--font-size-small);
+}
+
+.modal_body-content {
+  padding: 0rem var(--container-padding-small);
+  padding-bottom: var(--container-padding-small);
 }
