@@ -1,5 +1,6 @@
 // astro.config.mjs
 import { defineConfig } from "astro/config";
+import vercel from "@astrojs/vercel/serverless";
 
 import sanity from "@sanity/astro";
 import react from "@astrojs/react";
@@ -14,6 +15,8 @@ const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(
 
 // https://astro.build/config
 export default defineConfig({
+  output: "server",
+  adapter: vercel(),
   integrations: [sanity({
     projectId: PUBLIC_SANITY_PROJECT_ID,
     dataset: PUBLIC_SANITY_DATASET,
