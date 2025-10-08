@@ -61,11 +61,13 @@ const visualEditingEnabled =
     <meta name="author" content="Liam Mews" />
     <link rel="canonical" href={url} />
   </head>
-  <Nav>
-    <slot name="nav" />
-  </Nav>
   <body>
-    <slot />
+    <Nav>
+      <slot name="nav" />
+    </Nav>
+    <main>
+      <slot />
+    </main>
     <VisualEditing enabled={visualEditingEnabled} />
   </body>
 </html>

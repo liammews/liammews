@@ -44,6 +44,7 @@
     --text-color-primary: var(--neutral-1000);
     --text-color-secondary: var(--neutral-500);
     --text-color-inverse: var(--neutral-25);
+    
 
     --border-color-primary: var(--neutral-200);
 
@@ -76,4 +77,27 @@
     --focus-color: var(--blue-600);
 
     --ease-out-fun: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color-primary: var(--neutral-25);
+        --text-color-secondary: var(--neutral-200);
+        --text-color-inverse: var(--neutral-1000);
+
+        --border-color-primary: var(--neutral-800);
+
+        --surface-background-idle: var(--neutral-1000);
+        --surface-background-hover: var(--neutral-900);
+        --surface-background-active: var(--neutral-900);
+        --surface-foreground-idle: var(--neutral-900);
+        --surface-foreground-hover: var(--neutral-800);
+        --surface-foreground-active: var(--neutral-800);
+        --surface-inverse: var(--neutral-25);
+        --surface-inverse-hover: var(--neutral-50);
+
+        --scrim-background: rgba(0, 0, 0, 0.8);
+
+        --focus-color: var(--blue-600);
+    }
 }

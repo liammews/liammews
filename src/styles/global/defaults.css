@@ -17,14 +17,18 @@ html {
 }
 
 body {
+    margin: 0;
+}
+
+main {
     max-width: var(--container-large);
     margin: 4rem auto;
-    padding: var(--margin);
+    padding: 0rem var(--margin);
+    padding-bottom: 6rem;
 
     @media (max-width: 420px) {
         margin: 0rem auto !important;
-        padding-top: 0rem !important;
-        padding-bottom: 6rem;
+        padding-top: 8rem;
     }
 }
 

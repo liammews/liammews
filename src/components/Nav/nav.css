@@ -2,18 +2,32 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    margin-bottom: 6rem;
+    padding: 1.5rem var(--margin);
+    max-width: var(--container-large);
+    margin: 0 auto;
+}
+
+.nav{
     position: sticky;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
     background-color: var(--surface-background-idle);
+    margin-top: 6rem;
+    color: var(--text-color-primary);
 
     @media (max-width: 768px) {
-        padding-top: 1rem;
-        margin-bottom: 0rem;
+        position: fixed;
+        margin-top: 0;
+        top: 0;
+        left: 0;
+        right: 0;
     }
+}
+
+[data-icon="mews"] {
+    color: var(--text-color-primary);
 }
 
 .nav_button-group{

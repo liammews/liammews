@@ -21,8 +21,7 @@ const { data: bio } = await loadQuery<{ name: string; content: any[] }>({
   title="Liam Mews" 
   image="/favicon.svg"
 >
-	<main class="intro-in">
-    <section style="padding: 4rem 0;">
+    <section class="section">
       <h1 class="text-size-normal font-weight-normal">Liam Mews</h1>
       <p style="margin-bottom: 2.5rem;" class="text-color-muted">Designer/Developer</p>
 
@@ -56,5 +55,4 @@ const { data: bio } = await loadQuery<{ name: string; content: any[] }>({
         <LinkCard link="/inventory" icon="grid" title="Inventory" description="Well-designed products I own" />
       </div>
     </section>
-	</main>
 </Layout>

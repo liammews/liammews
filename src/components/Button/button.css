@@ -1,7 +1,7 @@
 .button {
     background-color: var(--surface-foreground-idle);
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 2.75rem;
+    width: 2.75rem;
     font-size: 1rem;
     display: flex;
     align-items: center;

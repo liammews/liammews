@@ -34,10 +34,11 @@
     justify-content: center;
     background-color: var(--surface-foreground-idle);
     border-radius: var(--border-radius-medium);
+    border: 1px solid var(--border-color-primary);
     z-index: 2;
 
     &.is-dark {
-        background-color: var(--surface-inverse);
+        background-color: black;
     }
 }
 

@@ -48,7 +48,6 @@ const { data: inventoryItems } = await loadQuery({
   </Button>
 </div>
 
-  <main>
     <Modal id="inventory" keyboardShortcut="i">
       <div slot="title">What is this?</div>
       <div class="rich-text modal_body-content">
@@ -62,7 +61,6 @@ const { data: inventoryItems } = await loadQuery({
         <InventoryCard title={item.name} image={item.image.asset.url} link={item.link} description={item.description} category={item.category.title} />
       ))}
     </div>
-  </main>
 </Layout>
 
 <style>

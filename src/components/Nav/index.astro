@@ -6,32 +6,33 @@ import Modal from "../Modal/index.astro";
 import NavItem from "./NavItem.astro";
 ---
 
-
-<header class="nav_container">
-    <a aria-label="Navigate to home" href="/">
-        <Icon name="logo" height={32} width={32} />
-    </a>
-
-    <div class="nav_button-group">
-        <slot />
-        <Button ariaLabel="Open Menu" modalId="menu" action="open" tooltip="⌘K">
-            <Icon name="list" />
-        </Button>
+<header class="nav">
+    <div class="nav_container">
+        <a aria-label="Navigate to home" href="/">
+            <Icon name="logo" height={32} width={32} />
+        </a>
+    
+        <div class="nav_button-group">
+            <slot />
+            <Button ariaLabel="Open Menu" modalId="menu" action="open" tooltip="⌘K">
+                <Icon name="list" />
+            </Button>
+        </div>
+    
+        <Modal id="menu" keyboardShortcut="k">
+            <div slot="title">Menu</div>
+    
+            <nav>
+                <ul class="nav_menu">
+                    <NavItem link="/">Index</NavItem>
+                    <NavItem link="/about">About</NavItem>
+                    <NavItem link="/moments">Moments</NavItem>
+                    <NavItem link="/inventory">Inventory</NavItem>
+                </ul>
+            </nav>
+        </Modal>
+    
     </div>
-
-    <Modal id="menu" keyboardShortcut="k">
-        <div slot="title">Menu</div>
-
-        <nav>
-            <ul class="nav_menu">
-                <NavItem link="/">Index</NavItem>
-                <NavItem link="/about">About</NavItem>
-                <NavItem link="/moments">Moments</NavItem>
-                <NavItem link="/inventory">Inventory</NavItem>
-            </ul>
-        </nav>
-    </Modal>
-
 </header>
   
 

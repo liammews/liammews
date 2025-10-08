@@ -33,7 +33,7 @@ const { data: moments } = await loadQuery({
       <Icon name="info" />
     </Button>
   </div>
-  <main>
+
     <Modal id="moments" keyboardShortcut="i">
       <div slot="title">What is this?</div>
       <div class="rich-text modal_body-content">
@@ -57,5 +57,4 @@ const { data: moments } = await loadQuery({
     {(moments as any[]).length === 0 && (
       <p>No moments found. Add some moments in your Sanity Studio!</p>
     )}
-  </main>
 </Layout>
