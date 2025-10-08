@@ -119,6 +119,10 @@ const { ariaLabel, link, modalId, action = 'open', tooltip, tooltipPosition = 't
   }
 
   function showTooltip(button: any, container: any) {
+    // Don't show tooltips on mobile
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) return;
+    
     const tooltipText = (button as any).dataset.tooltip;
     const position = (button as any).dataset.tooltipPosition || 'top';
     

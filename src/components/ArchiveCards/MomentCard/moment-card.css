@@ -8,8 +8,10 @@
     transition: background-color 0.3s ease-in-out;
     border-radius: var(--border-radius-small);
 
-    &:hover {
-        background-color: var(--surface-foreground-hover);
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            background-color: var(--surface-foreground-hover);
+        }
     }
 }
 

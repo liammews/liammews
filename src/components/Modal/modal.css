@@ -35,6 +35,11 @@
   /* Hide scrollbar while maintaining scroll functionality */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
+
+  @media (max-width: 768px) {
+    width: 95%;
+    max-width: 40rem;
+  }
 }
 
 .modal-content::-webkit-scrollbar {

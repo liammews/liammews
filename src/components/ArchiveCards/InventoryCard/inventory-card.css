@@ -16,8 +16,10 @@
     overflow: hidden;
     transition: background-color 0.3s ease-out;
 
-    &:hover {
-        background-color: var(--surface-foreground-hover);
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            background-color: var(--surface-foreground-hover);
+        }
     }
 
     &:active {

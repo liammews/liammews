@@ -18,9 +18,11 @@
         transform: scale(0.952); /* Counter-scale to keep icon same size */
     }
 
-    &:hover {
-        background-color: var(--surface-foreground-hover);
-        transform: scale(1.05);
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            background-color: var(--surface-foreground-hover);
+            transform: scale(1.05);
+        }
     }
 
     &:active {
@@ -32,6 +34,8 @@
         outline-offset: 2px;
     }
 }
+
+
 
 .tooltip-container {
     @media (max-width: 420px) {

@@ -10,7 +10,7 @@
     z-index: 100;
     background-color: var(--surface-background-idle);
 
-    @media (max-width: 420px) {
+    @media (max-width: 768px) {
         padding-top: 1rem;
         margin-bottom: 0rem;
     }
@@ -44,8 +44,10 @@
     padding: var(--container-padding-small);
     border-radius: var(--border-radius-medium);
 
-    &:hover:not(:active) {
-        background-color: var(--surface-background-hover);
+    @media (hover: hover) and (pointer: fine) {
+        &:hover:not(:active) {
+            background-color: var(--surface-background-hover);
+        }
     }
 
     &:active {

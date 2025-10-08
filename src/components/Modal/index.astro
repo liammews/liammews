@@ -58,9 +58,14 @@ const { id, keyboardShortcut } = Astro.props;
       modal.offsetHeight;
       modal.setAttribute('aria-hidden', 'false');
       
-      // Prevent background scrolling while preserving scrollbar space
+      // Prevent background scrolling
       document.body.style.overflow = 'hidden';
-      document.documentElement.style.borderRight = '15px solid transparent';
+      
+      // Add scrollbar compensation on desktop only
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      if (!isMobile) {
+        document.documentElement.style.borderRight = '15px solid transparent';
+      }
       
       // Focus the modal
       setTimeout(() => {
