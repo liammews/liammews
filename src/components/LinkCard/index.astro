@@ -23,15 +23,15 @@ const linkAttributes = isExternalLink
 ---
 
 <div class="link-card">
-    <a href={link} aria-label={`Navigate to ${title}`} class={`link-card_container ${isExternalLink ? 'is-external' : ''}`} {...linkAttributes}>
+    <a href={link} aria-label={`Navigate to ${title}`} class={`link-card_container border ${isExternalLink ? 'is-external' : ''}`} {...linkAttributes}>
 
         {icon && 
-            <div class="link-card_icon-container">
+            <div class="link-card_icon-container small-shadow">
                 <Icon name={icon} width={20} height={20} />
             </div>
             }
             {image &&
-             <div class="link-card_icon-container is-dark">
+             <div class="link-card_icon-container small-shadow">
                 <img src={image} loading="lazy" alt={title} class="link-card_icon" />
             </div>
             }

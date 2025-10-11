@@ -20,13 +20,13 @@ const { id, keyboardShortcut } = Astro.props;
   aria-hidden="true"
   tabindex="-1"
 >
-  <div class="modal-content">
+  <div class="modal-content large-shadow">
     <div class="modal-header">
       <h2 id={`${id}-title`} class="modal-title">
         <slot name="title" />
       </h2>
-      <Button modalId={id} action="close" ariaLabel="Close modal" tooltip="Esc" tooltipPosition="left">
-        <Icon name="x" />
+      <Button modalId={id} action="close" ariaLabel="Close modal" tooltipPosition="left" isSmall>
+        Esc
       </Button>
     </div>
     <div class="modal-body">

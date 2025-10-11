@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem var(--margin);
+    padding: 1.25rem var(--margin);
     max-width: var(--container-large);
     margin: 0 auto;
 }
@@ -51,12 +51,15 @@
 }
 
 .nav_menu-item{
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     text-decoration: none;
     color: var(--text-color-secondary);
     font-size: var(--font-size-small);
     padding: var(--container-padding-small);
     border-radius: var(--border-radius-medium);
+
 
     @media (hover: hover) and (pointer: fine) {
         &:hover:not(:active) {

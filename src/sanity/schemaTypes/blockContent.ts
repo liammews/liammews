@@ -39,6 +39,7 @@ export const blockContentType = defineType({
         decorators: [
           { title: "Strong", value: "strong" },
           { title: "Emphasis", value: "em" },
+          { title: "Code", value: "code" },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
@@ -70,6 +71,25 @@ export const blockContentType = defineType({
           title: "Alternative Text",
         },
       ],
+    }),
+    defineArrayMember({
+      type: "code",
+      name: "code",
+      title: "Code Block",
+      options: {
+        language: "javascript",
+        languageAlternatives: [
+          { title: "JavaScript", value: "javascript" },
+          { title: "TypeScript", value: "typescript" },
+          { title: "HTML", value: "html" },
+          { title: "CSS", value: "css" },
+          { title: "JSX", value: "jsx" },
+          { title: "JSON", value: "json" },
+          { title: "Bash", value: "bash" },
+          { title: "Python", value: "python" },
+        ],
+        withFilename: true,
+      },
     }),
   ],
 });

@@ -2,6 +2,7 @@
 // ./src/pages/post/[slug].astro
 import type { SanityDocument } from "@sanity/client";
 import { loadQuery } from "../../sanity/lib/load-query";
+import { urlForImage } from "../../sanity/lib/url-for-img";
 import Layout from "../../layouts/layout.astro";
 import PortableText from "../../components/PortableText.astro";
 
@@ -21,13 +22,48 @@ export async function getStaticPaths() {
 
 const { params } = Astro;
 
-const { data: post } = await loadQuery<{ title: string; body: any[] }>({
-  query: `*[_type == "blogPost" && slug.current == $slug][0]`,
+const { data: post } = await loadQuery<{ title: string; body: any[]; publishedAt: string; mainImage: any }>({
+  query: `*[_type == "blogPost" && slug.current == $slug][0] {
+    title,
+    body,
+    publishedAt,
+    mainImage {
+      asset-> {
+        _id,
+        url
+      },
+      alt
+    }
+  }`,
   params,
 });
+
+// Process the main image URL
+console.log('Post data:', post);
+console.log('Main image data:', post.mainImage);
+const imageUrl = post.mainImage ? urlForImage(post.mainImage).url() : null;
+console.log('Generated image URL:', imageUrl);
 ---
 
 <Layout>
-  <h1>A post about {post.title}</h1>
-  <PortableText portableText={post.body} />
+  <div style="margin-bottom: 4rem;">
+    <h1 class="text-size-large font-weight-normal" style="margin-bottom: 0.5rem;">{post.title}</h1>
+    <p class="text-color-secondary">{new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+  </div>
+
+  {imageUrl && <img class="post_featured-image" src={imageUrl} alt={post.mainImage?.alt || post.title} />}
+
+  <article class="rich-text">
+    <PortableText portableText={post.body} />
+  </article>
 </Layout>
+
+<style>
+  .post_featured-image {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0 0 1px var(--border-color);
+    margin-bottom: 4rem;
+    border-radius: var(--border-radius-medium);
+  }
+</style>

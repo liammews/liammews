@@ -8,6 +8,7 @@
     transition: background-color 0.3s ease-in-out;
     border-radius: var(--border-radius-small);
     border: none;
+    box-shadow: 0 0 0 1px var(--border-color);
 
     @media (hover: hover) and (pointer: fine) {
         &:hover {

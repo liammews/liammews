@@ -1,0 +1,120 @@
+---
+// ./src/components/PortableTextCode.astro
+import { createHighlighter } from 'shiki';
+import "./portable-text-code.css";
+
+const { code, language, filename } = Astro.props.node || {};
+
+// Early return if no code is provided
+if (!code) {
+  throw new Error('PortableTextCode component requires code prop');
+}
+
+// Create Shiki highlighter with both themes
+const highlighter = await createHighlighter({
+  themes: ['github-dark', 'github-light'],
+  langs: ['javascript', 'typescript', 'html', 'css', 'jsx', 'json', 'bash', 'python', 'astro'],
+});
+
+// Generate both dark and light versions
+const highlightedCodeDark = highlighter.codeToHtml(code, {
+  lang: language || 'text',
+  theme: 'github-dark',
+});
+
+const highlightedCodeLight = highlighter.codeToHtml(code, {
+  lang: language || 'text',
+  theme: 'github-light',
+});
+---
+
+<div class="code-block" data-theme="auto">
+  <div class="code-header">
+    {filename && <div class="code-filename">{filename}</div>}
+    <button class="copy-button" data-code={code} title="Copy code">
+      <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polyline points="168 168 216 168 216 40 88 40 88 88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><rect x="40" y="88" width="128" height="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+      <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="var(--success-color)" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
+    </button>
+  </div>
+  <div class="shiki-container">
+    <div class="shiki-dark" aria-hidden="false" set:html={highlightedCodeDark}></div>
+    <div class="shiki-light" aria-hidden="true" set:html={highlightedCodeLight}></div>
+  </div>
+</div>
+
+<script>
+  // Update aria-hidden attributes when theme changes
+  function updateAriaHidden() {
+    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    document.querySelectorAll('.shiki-dark').forEach(el => {
+      el.setAttribute('aria-hidden', isDark ? 'false' : 'true');
+    });
+    
+    document.querySelectorAll('.shiki-light').forEach(el => {
+      el.setAttribute('aria-hidden', isDark ? 'true' : 'false');
+    });
+  }
+
+  // Copy to clipboard functionality
+  function setupCopyButtons() {
+    const buttons = document.querySelectorAll('.copy-button');
+    console.log('Found copy buttons:', buttons.length);
+    
+    buttons.forEach((button, index) => {
+      console.log(`Setting up button ${index}`);
+      button.addEventListener('click', async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Copy button clicked');
+        
+        const code = button.getAttribute('data-code');
+        const copyIcon = button.querySelector('.copy-icon');
+        const checkIcon = button.querySelector('.check-icon');
+        
+        console.log('Code to copy:', code?.substring(0, 50) + '...');
+        
+        try {
+          await navigator.clipboard.writeText(code);
+          console.log('Code copied successfully');
+          
+          // Show success state
+          button.classList.add('copied');
+          
+          // Reset after 2 seconds
+          setTimeout(() => {
+            button.classList.remove('copied');
+          }, 2000);
+          
+        } catch (err) {
+          console.error('Failed to copy code:', err);
+          // Fallback for older browsers
+          const textArea = document.createElement('textarea');
+          textArea.value = code;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+          
+          // Show success state
+          button.classList.add('copied');
+          
+          // Reset after 2 seconds
+          setTimeout(() => {
+            button.classList.remove('copied');
+          }, 2000);
+        }
+      });
+    });
+  }
+
+  // Update on load
+  document.addEventListener('DOMContentLoaded', () => {
+    updateAriaHidden();
+    setupCopyButtons();
+  });
+
+  // Update when theme changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateAriaHidden);
+</script>
+

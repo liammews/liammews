@@ -1,11 +1,13 @@
 ---
 import "./nav.css"
+import Button from "../Button/index.astro";
 
 interface Props {
     link: string;
+    shortcut: string;
 }
 
-const { link } = Astro.props;
+const { link, shortcut } = Astro.props;
 
 // Get current pathname
 const currentPath = Astro.url.pathname;
@@ -15,7 +17,28 @@ const isActive = currentPath === link || (link !== '/' && currentPath.startsWith
 ---
 
 <li>
-    <a href={link} class:list={["nav_menu-item", { active: isActive }]}>
+    <a href={link} class:list={["nav_menu-item", { active: isActive }]} data-nav-shortcut={shortcut} data-nav-link={link}>
         <slot />
+
+        <p class="text-size-xsmall text-color-muted">
+            ⌘{shortcut}
+        </p>
     </a>
 </li>
+
+<script define:vars={{ link, shortcut }}>
+    function setupNavShortcut() {
+        document.addEventListener('keydown', (e) => {
+            // Extract the key from shortcut (e.g., "⌘1" -> "1", "⌘I" -> "i")
+            const key = shortcut.replace(/^[⌘⌥⇧⌃]/g, '').toLowerCase();
+            
+            // Check if Command (Meta) or Ctrl is pressed along with the shortcut key
+            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === key) {
+                e.preventDefault();
+                window.location.href = link;
+            }
+        });
+    }
+    
+    setupNavShortcut();
+</script>

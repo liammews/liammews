@@ -16,6 +16,13 @@ html {
     color: var(--blue-600);
 }
 
+@media (prefers-color-scheme: dark) {
+    ::selection {
+        background-color: var(--blue-600);
+        color: var(--blue-100);
+    }
+}
+
 body {
     margin: 0;
 }

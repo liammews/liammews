@@ -1,17 +1,39 @@
 .button {
-    background-color: var(--surface-foreground-idle);
-    height: 2.75rem;
-    width: 2.75rem;
+    background-color: var(--surface-background-idle);
+    border: none;
+    padding: 0 0.5rem;
+    height: 2.5rem;
+        width: auto;
     font-size: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
-    border-radius: var(--border-radius-medium);
+    border-radius: var(--border-radius-small);
     cursor: pointer;
     position: relative;
     transition: transform 0.6s var(--ease-out-fun);
     color: var(--text-color-primary);
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-bold);
+
+    &.is-small {
+        font-size: 0.75rem;
+        padding: 0 0.5rem;
+        height: 2rem;
+        width: auto;
+    }
+
+    &.is-square {
+        width: 2.5rem;
+        padding: 0;
+    }
+
+    &.is-square.is-small{
+        width: 2rem;
+        padding: 0;
+    }
+
+
     
 
     & > * {
@@ -21,13 +43,12 @@
 
     @media (hover: hover) and (pointer: fine) {
         &:hover {
-            background-color: var(--surface-foreground-hover);
-            transform: scale(1.05);
+            background-color: var(--surface-background-hover);
         }
     }
 
     &:active {
-        background-color: var(--surface-foreground-active);
+        background-color: var(--surface-background-active);
     }
 
     &:focus-visible {

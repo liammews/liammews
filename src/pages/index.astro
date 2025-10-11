@@ -50,9 +50,11 @@ const { data: bio } = await loadQuery<{ name: string; content: any[] }>({
 
     <section class="section">
       <h2 style="margin-bottom: 2rem;" class="text-size-normal font-weight-normal">Content</h2>
-      <div class="list">
+      <div class="grid">
+        <LinkCard link="/about" icon="grid" title="About me" description="More information about me" />
+        <LinkCard link="#" icon="grid" title="Craft" description="Coming soon" />
         <LinkCard link="/moments" icon="image" title="Moments" description="A collection of moments" />
-        <LinkCard link="/inventory" icon="grid" title="Inventory" description="Well-designed products I own" />
+        <LinkCard link="/inventory" icon="grid" title="Inventory" description="Products that I enjoy" />
       </div>
     </section>
 </Layout>

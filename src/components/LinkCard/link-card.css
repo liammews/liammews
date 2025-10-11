@@ -5,14 +5,13 @@
     text-decoration: none;
     border-radius: var(--border-radius-large);
     padding: var(--container-padding-small);
-    margin: 0rem calc(var(--container-padding-small) * -1);
     color: var(--text-color-primary);
     font-size: var(--font-size-small);
     transition: background-color 0.3s ease-out;
 
     @media (hover: hover) and (pointer: fine) {
         &:hover {
-            background-color: var(--surface-foreground-hover);
+            background-color: var(--surface-background-hover);
         }
     }
 
@@ -34,18 +33,18 @@
     justify-content: center;
     background-color: var(--surface-foreground-idle);
     border-radius: var(--border-radius-medium);
-    border: 1px solid var(--border-color-primary);
     z-index: 2;
-
-    &.is-dark {
-        background-color: black;
-    }
+    background-color: black;
 }
 
 .link-card_icon {
     width: 1.5rem;
     height: 1.5rem;
     pointer-events: none;
+}
+
+.link-card_icon-container [data-icon] {
+    color: white;
 }
 
 .link-card_content {

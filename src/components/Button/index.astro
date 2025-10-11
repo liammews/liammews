@@ -8,15 +8,33 @@ interface Props {
   action?: 'open' | 'close';
   tooltip?: string;
   tooltipPosition?: 'top' | 'bottom' | 'left' | 'right';
+  isSmall?: boolean;
+  isSquare?: boolean;
+  isDummy?: boolean;
 }
 
-const { ariaLabel, link, modalId, action = 'open', tooltip, tooltipPosition = 'top' } = Astro.props;
+const { ariaLabel, link, modalId, action = 'open', tooltip, tooltipPosition = 'top', isSmall = false, isSquare = false, isDummy = false } = Astro.props;
+
+const buttonClasses = [
+  'button border',
+  isSmall && 'is-small',
+  isSquare && 'is-square'
+].filter(Boolean).join(' ');
 ---
 
-{link ? (
+{isDummy ? (
+  <div 
+    class={buttonClasses}
+    aria-label={ariaLabel}
+    data-tooltip={tooltip}
+    data-tooltip-position={tooltipPosition}
+  >
+    <slot />
+  </div>
+) : link ? (
   <a 
     href={link} 
-    class="button" 
+    class={buttonClasses} 
     aria-label={ariaLabel}
     data-tooltip={tooltip}
     data-tooltip-position={tooltipPosition}
@@ -25,7 +43,7 @@ const { ariaLabel, link, modalId, action = 'open', tooltip, tooltipPosition = 't
   </a>
 ) : modalId ? (
   <button 
-    class="button" 
+    class={buttonClasses} 
     aria-label={ariaLabel}
     data-modal-action={action}
     data-modal-id={modalId}
@@ -36,7 +54,7 @@ const { ariaLabel, link, modalId, action = 'open', tooltip, tooltipPosition = 't
   </button>
 ) : (
   <button 
-    class="button" 
+    class={buttonClasses} 
     aria-label={ariaLabel}
     data-tooltip={tooltip}
     data-tooltip-position={tooltipPosition}

@@ -23,15 +23,15 @@
 }
 
 :root {
-    --gutter: 1.75rem;
+    --gutter: 1rem;
     --margin: 1.5rem;
 
     --container-large: 38rem;
     --container-small: 32rem;
 
     --border-radius-small: 0.5rem;
-    --border-radius-medium: 1rem;
-    --border-radius-large: 2rem;
+    --border-radius-medium: 0.75rem;
+    --border-radius-large: 1rem;
     --border-radius-full: 9999px;
 
     --text-size-small: 0.875rem;
@@ -57,7 +57,7 @@
     --surface-inverse: var(--neutral-900);
     --surface-inverse-hover: var(--neutral-800);
 
-    --scrim-background: rgba(0, 0, 0, 0.2);
+    --scrim-background: rgba(0, 0, 0, 0.07);
 
     --font-family-sans: "TWK Lausanne", -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
     --font-family-serif: "TWK Lausanne", "Merriweather", serif;
@@ -67,7 +67,7 @@
     --font-weight-bold: 500;
 
     --line-height-normal: 1.3;
-    --line-height-relaxed: 1.6;
+    --line-height-relaxed: 1.7;
 
     --font-size-xsmall: 0.8125rem;
     --font-size-small: 0.875rem;
@@ -77,6 +77,12 @@
     --focus-color: var(--blue-600);
 
     --ease-out-fun: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --border-color: rgba(0, 0, 0, 0.08);
+    --shadow-color: rgba(0, 0, 0, 0.06);
+
+    --success-color: #1aaf51;
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -85,7 +91,7 @@
         --text-color-secondary: var(--neutral-200);
         --text-color-inverse: var(--neutral-1000);
 
-        --border-color-primary: var(--neutral-800);
+        --border-color-primary: var(--neutral-500);
 
         --surface-background-idle: var(--neutral-1000);
         --surface-background-hover: var(--neutral-900);
@@ -99,5 +105,9 @@
         --scrim-background: rgba(0, 0, 0, 0.8);
 
         --focus-color: var(--blue-600);
+
+        --success-color: #5bbd7f;
+
+        --border-color: rgb(38, 38, 38);
     }
 }

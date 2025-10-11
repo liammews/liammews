@@ -1,0 +1,22 @@
+.large-shadow {
+    box-shadow: 
+    0 0 0px 1px var(--border-color),
+    0 1px 1px -0.5px var(--shadow-color), 
+    0 3px 3px -1.5px var(--shadow-color),
+    0 6px 6px -3px var(--shadow-color),
+    0 12px 12px -6px var(--shadow-color),
+    0 24px 24px -12px var(--shadow-color),
+    0 48px 48px -24px var(--shadow-color);
+}
+
+.small-shadow {
+    box-shadow: 
+    0 0 0px 1px var(--border-color),
+    0 3px 3px -1.5px rgba(0, 0, 0, 0.03),
+    0 6px 6px -3px rgba(0, 0, 0, 0.03);
+}
+
+.border {
+    box-shadow: 
+    0 0 0px 1px var(--border-color);
+}
