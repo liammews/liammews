@@ -5,6 +5,7 @@ import MomentCard from "../components/ArchiveCards/MomentCard/index.astro";
 import Modal from "../components/Modal/index.astro";
 import Button from "../components/Button/index.astro";
 import { Icon } from "astro-icon/components";
+import PageHeading from "../components/PageHeading/index.astro";
 
 // GROQ query to fetch all moments
 const MOMENTS_QUERY = `*[_type == "moments"] | order(date desc) {
@@ -33,6 +34,8 @@ const { data: moments } = await loadQuery({
       <Icon name="info" />
     </Button>
   </div>
+
+  <PageHeading title="Moments" description="My alternative to social media." />
 
     <Modal id="moments" keyboardShortcut="i">
       <div slot="title">What is this?</div>

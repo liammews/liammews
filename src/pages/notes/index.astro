@@ -1,0 +1,44 @@
+---
+import Layout from "../../layouts/layout.astro";
+import { loadQuery } from "../../sanity/lib/load-query";
+import type { SanityDocument } from "@sanity/client";
+import LinkCard from "../../components/LinkCard/index.astro";
+import PageHeading from "../../components/PageHeading/index.astro";
+
+// Fetch all blog posts from Sanity
+const { data: posts } = await loadQuery<SanityDocument[]>({
+  query: `*[_type == "blogPost"] | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    excerpt,
+    mainImage {
+      asset-> {
+        _id,
+        url
+      },
+      alt
+    }
+  }`,
+});
+---
+
+<Layout title="Notes" description="Notes, thoughts and ideas.">
+  <div class="container">
+
+    <PageHeading title="Notes" description="Notes, thoughts and ideas." />
+
+    <div class="list">
+      {posts.map((post) => (
+        <article>
+            <LinkCard link={`/notes/${post.slug.current}`} title={post.title} description={new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} />    
+        </article>
+      ))}
+      
+      {posts.length === 0 && (
+        <p class="text-color-secondary">No posts found.</p>
+      )}
+    </div>
+  </div>
+</Layout>

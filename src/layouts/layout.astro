@@ -2,6 +2,8 @@
 import { VisualEditing } from "@sanity/astro/visual-editing";
 import "../styles/index.css";
 import Nav from "../components/Nav/index.astro";
+import Button from "../components/Button/index.astro";
+import { Icon } from "astro-icon/components";
 
 export interface Props {
   title?: string;
@@ -9,14 +11,34 @@ export interface Props {
   image?: string;
   url?: string;
   type?: string;
+  navVisible?: boolean;
+  backLink?: string | null;
+  ariaLabel?: string | null;
+  backButtonText?: string | null;
+}
+
+// Declare global window.plausible for TypeScript to prevent errors in the inline script
+declare global {
+  interface Window {
+    plausible: {
+      (...args: any[]): void;
+      q?: any[];
+      o?: any;
+      init?: (i: any) => void;
+    };
+  }
 }
 
 const {
   title = "Liam Mews",
   description = "Designer, developer, Webflow Project Lead @ MakeBuild.",
-  image = "/favicon.svg",
+  image = "/favicon.svg", 
   url = Astro.url.href,
-  type = "website"
+  type = "website",
+  navVisible = true,
+  backLink = null, // Added missing comma
+  ariaLabel = null,
+  backButtonText = null,
 } = Astro.props;
 
 const visualEditingEnabled =
@@ -62,12 +84,63 @@ const visualEditingEnabled =
     <link rel="canonical" href={url} />
   </head>
   <body>
-    <Nav>
-      <slot name="nav" />
-    </Nav>
+    {navVisible && (
+    <Nav navVisible={navVisible}>
+        <slot name="nav" />
+      </Nav>
+    )}
+
+    {backLink && (
+      <div class="layout_back-button">
+        <a class="back-button" aria-label={ariaLabel} href={backLink}>
+          <Icon name="arrow-u-up-left" />
+          {backButtonText}
+        </a>
+      </div>
+    )}
+
     <main>
       <slot />
     </main>
     <VisualEditing enabled={visualEditingEnabled} />
   </body>
 </html>
+
+<style>
+  .layout_back-button {
+    padding: 2rem var(--margin) 2rem var(--margin);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .back-button {
+    background: var(--surface-foreground-idle);
+    border-radius: 99rem;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    color: var(--text-color-primary);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-bold);
+    
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            background: var(--surface-foreground-hover);
+        }
+    }
+
+    &:active {
+        background: var(--surface-foreground-active);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--focus-color);
+        outline-offset: 2px;
+    }
+  }
+</style>

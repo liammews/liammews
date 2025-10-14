@@ -14,7 +14,7 @@ import NavItem from "./NavItem.astro";
     
         <div class="nav_button-group">
             <slot />
-            <Button ariaLabel="Open Menu" modalId="menu" action="open" tooltip="⌘K" isSquare>
+            <Button ariaLabel="Open Menu" modalId="menu" action="open" isSquare>
                 <Icon name="list" />
             </Button>
         </div>
@@ -26,12 +26,13 @@ import NavItem from "./NavItem.astro";
                 <ul class="nav_menu">
                     <NavItem link="/" shortcut="1">Index</NavItem>
                     <NavItem link="/about" shortcut="2">About</NavItem>
-                    <NavItem link="/moments" shortcut="3">Moments</NavItem>
-                    <NavItem link="/inventory" shortcut="4">Inventory</NavItem>
+                    <NavItem link="/notes" shortcut="3">Notes</NavItem>
+                    <NavItem link="/moments" shortcut="4">Moments</NavItem>
+                    <NavItem link="/inventory" shortcut="5">Inventory</NavItem>
                 </ul>
             </nav>
         </Modal>
-    
+
     </div>
 </header>
   

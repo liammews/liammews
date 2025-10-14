@@ -4,6 +4,7 @@ import { loadQuery } from "../sanity/lib/load-query";
 import PortableText from "../components/PortableText.astro";
 import LinkCard from "../components/LinkCard/index.astro";
 import Resume from "../components/Resume/index.astro";
+import PageHeading from "../components/PageHeading/index.astro";
 
 // GROQ query to fetch the short bio document
 const BIO_QUERY = `*[_type == "bio" && name == "Short Bio"][0] {
@@ -21,16 +22,14 @@ const { data: bio } = await loadQuery<{ name: string; content: any[] }>({
   title="Liam Mews" 
   image="/favicon.svg"
 >
-    <section class="section">
-      <h1 class="text-size-normal font-weight-normal">Liam Mews</h1>
-      <p style="margin-bottom: 2.5rem;" class="text-color-muted">Designer/Developer</p>
 
+    <PageHeading title="Liam Mews" description="Designer/Developer">
       {bio && bio.content && (
         <div class="rich-text">
           <PortableText portableText={bio.content} />
         </div>
       )}
-    </section>
+    </PageHeading>
 
     <section class="section">
       <h2 style="margin-bottom: 2rem;" class="text-size-normal font-weight-normal">Recent Work</h2>

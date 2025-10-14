@@ -21,7 +21,7 @@ const isActive = currentPath === link || (link !== '/' && currentPath.startsWith
         <slot />
 
         <p class="text-size-xsmall text-color-muted">
-            ⌘{shortcut}
+            {shortcut}
         </p>
     </a>
 </li>
@@ -29,11 +29,8 @@ const isActive = currentPath === link || (link !== '/' && currentPath.startsWith
 <script define:vars={{ link, shortcut }}>
     function setupNavShortcut() {
         document.addEventListener('keydown', (e) => {
-            // Extract the key from shortcut (e.g., "⌘1" -> "1", "⌘I" -> "i")
-            const key = shortcut.replace(/^[⌘⌥⇧⌃]/g, '').toLowerCase();
-            
-            // Check if Command (Meta) or Ctrl is pressed along with the shortcut key
-            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === key) {
+            // Check if the key matches the shortcut (no modifier needed)
+            if (e.key === shortcut && !e.metaKey && !e.ctrlKey && !e.altKey && !e.shiftKey) {
                 e.preventDefault();
                 window.location.href = link;
             }

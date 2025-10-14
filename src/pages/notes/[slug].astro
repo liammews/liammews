@@ -45,7 +45,7 @@ const imageUrl = post.mainImage ? urlForImage(post.mainImage).url() : null;
 console.log('Generated image URL:', imageUrl);
 ---
 
-<Layout>
+<Layout backLink={"/notes"} navVisible={false} aria-label="Back to notes" backButtonText="Back to notes">
   <div style="margin-bottom: 4rem;">
     <h1 class="text-size-large font-weight-normal" style="margin-bottom: 0.5rem;">{post.title}</h1>
     <p class="text-color-secondary">{new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>

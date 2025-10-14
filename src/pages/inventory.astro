@@ -5,6 +5,7 @@ import InventoryCard from "../components/ArchiveCards/InventoryCard/index.astro"
 import Button from "../components/Button/index.astro";
 import { Icon } from "astro-icon/components";
 import Modal from "../components/Modal/index.astro";
+import PageHeading from "../components/PageHeading/index.astro";
 
 // GROQ query to fetch all inventory items with category data
 const INVENTORY_QUERY = `*[_type == "inventoryItem"] | order(_createdAt desc) {
@@ -47,6 +48,8 @@ const { data: inventoryItems } = await loadQuery({
     <Icon name="info" />
   </Button>
 </div>
+
+    <PageHeading title="Inventory" description="A place to collate and share my favourite essential." />
 
     <Modal id="inventory" keyboardShortcut="i">
       <div slot="title">What is this?</div>

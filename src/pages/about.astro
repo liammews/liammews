@@ -3,6 +3,7 @@ import Layout from "../layouts/layout.astro";
 import { loadQuery } from "../sanity/lib/load-query";
 import PortableText from "../components/PortableText.astro";
 import Resume from "../components/Resume/index.astro";
+import PageHeading from "../components/PageHeading/index.astro";
 
 type Bio = {
   name: string;
@@ -24,6 +25,11 @@ console.log('Bio map:', bioMap);
 ---
 
 <Layout title="About" description="About Liam Mews">
+
+    <PageHeading
+        title="About"
+        description="A little bit about me."
+    />
 
     <div class="intro-in">
         <section class="section about_section">
