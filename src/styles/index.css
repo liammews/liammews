@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "Lilex";
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url("/Lilex[wght].ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Lilex";
+  font-style: italic;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url("/Lilex-Italic[wght].ttf") format("truetype");
+}
+
+:root{
+    --site-width: 40rem;
+    --font-family-mono: "Lilex", monospace;
+    --background: hsla(0, 0%, 100%);
+    --content: hsla(0, 0%,10%);
+    --conent-muted: hsla(0, 0%, 30%);
+    --content-link: oklch(51.51% 0.2399 257.85);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --site-width: 40rem;
+    --font-family-mono: "Lilex", monospace;
+    --background: hsla(0, 0%, 5%);
+    --content: hsla(0, 0%,100%);
+    --conent-muted: hsla(0, 0%, 60%);
+    --content-link: oklch(73.08% 0.1583 248.133);
+  }
+}
+
+html {
+    font-size: 1rem;
+    background-color: var(--background);
+    color: var(--content);
+    font-family: var(--font-family-mono);
+    font-size: 0.8125rem;
+    line-height: 1.75;
+}
+
+.prose {
+    text-wrap: pretty;
+}
+
+a {
+    color: var(--content-link);
+    text-underline-offset: 4px;
+}
+
+
+
+
+.container {
+        width: 100%;
+        max-width: var(--site-width);
+        margin: 0 auto;
+    }

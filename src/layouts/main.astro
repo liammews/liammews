@@ -1,0 +1,54 @@
+---
+import Logo from "../components/logo.astro"
+import "../styles/index.css"
+import lilex from "/Lilex[wght].ttf"
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+        <link
+            rel="preload"
+            href={lilex}
+            as="font"
+            type="font/ttf"
+            crossorigin="anonymous"
+        />
+		<title>Liam Mews</title>
+	</head>
+	<body class="body">
+	    <header class="header">
+					<div class="container">
+						<Logo />
+					</div>
+		</header>
+		<main class="main container prose">
+		<slot />
+		</main>
+	</body>
+</html>
+
+<style>
+    .body{
+        width: 100%;
+        margin: 0 auto;
+        min-height: 100vh
+    }
+
+    .header {
+        max-width: 100vw;
+        margin-top: 6rem;
+        position: sticky;
+        top: 0;
+        left: 0;
+        background-color: var(--background);
+    }
+
+    .main {
+        padding-block: 10rem;
+    }
+</style>
