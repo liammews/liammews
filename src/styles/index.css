@@ -15,12 +15,12 @@
 }
 
 :root{
-    --site-width: 40rem;
+    --site-width: 38rem;
     --font-family-mono: "Lilex", monospace;
     --background: hsla(0, 0%, 100%);
     --content: hsla(0, 0%,10%);
     --conent-muted: hsla(0, 0%, 30%);
-    --content-link: oklch(51.51% 0.2399 257.85);
+    --content-link: oklch(70.5% 0.22 37);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,7 +31,7 @@
     --background: hsla(0, 0%, 5%);
     --content: hsla(0, 0%,100%);
     --conent-muted: hsla(0, 0%, 60%);
-    --content-link: oklch(73.08% 0.1583 248.133);
+    --content-link: oklch(70.5% 0.22 37);
   }
 }
 
@@ -49,15 +49,15 @@ html {
 }
 
 a {
-    color: var(--content-link);
-    text-underline-offset: 4px;
+    color: var(--content);
+    &:hover{
+        background-color: oklch(70.5% 0.22 37);
+    }
 }
 
 
-
-
 .container {
-        width: 100%;
-        max-width: var(--site-width);
-        margin: 0 auto;
-    }
+    max-width: var(--site-width);
+    margin: 0 auto;
+    padding-inline: 1rem;
+}
