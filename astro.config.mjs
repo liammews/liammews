@@ -6,4 +6,7 @@ import mdx from '@astrojs/mdx';
 export default defineConfig({
   // ...
   integrations: [mdx()],
+  image: {
+    remotePatterns: [{ protocol: 'https', hostname: 'cdn.sanity.io' }],
+  },
 });

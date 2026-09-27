@@ -1,0 +1,12 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "liammews-studio",
+  "compatibility_date": "2026-09-27",
+  "routes": [
+    {"pattern": "cms.liammews.com", "custom_domain": true}
+  ],
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}

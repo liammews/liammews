@@ -7,6 +7,10 @@
     "node": ">=22.12.0"
   },
   "scripts": {
+    "cms:dev": "pnpm --dir studio dev",
+    "cms:build": "pnpm --dir studio build",
+    "cms:check": "pnpm --dir studio check",
+    "cms:deploy": "pnpm --dir studio deploy",
     "dev": "astro dev",
     "build": "astro build",
     "deploy": "astro build && wrangler deploy",
@@ -16,7 +20,8 @@
   "dependencies": {
     "@astrojs/cloudflare": "^14.1.3",
     "@astrojs/mdx": "^7.0.3",
-    "astro": "^7.1.1"
+    "astro": "^7.1.1",
+    "sharp": "^0.35.4"
   },
   "devDependencies": {
     "wrangler": "^4.112.0"

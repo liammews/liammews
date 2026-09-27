@@ -1,3 +1,6 @@
+packages:
+  - studio
+
 allowBuilds:
   esbuild: true
   sharp: true

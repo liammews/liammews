@@ -18,8 +18,9 @@
     --site-width: 38rem;
     --font-family-mono: "Lilex", monospace;
     --background: hsla(0, 0%, 100%);
+    --foreground: hsla(0, 0%, 97%);
     --content: hsla(0, 0%,10%);
-    --conent-muted: hsla(0, 0%, 30%);
+    --content-muted: hsla(0, 0%, 40%);
     --content-link: oklch(70.5% 0.22 37);
 }
 
@@ -29,14 +30,14 @@
     --site-width: 40rem;
     --font-family-mono: "Lilex", monospace;
     --background: hsla(0, 0%, 5%);
+    --foreground: hsla(0, 0%, 8%);
     --content: hsla(0, 0%,100%);
-    --conent-muted: hsla(0, 0%, 60%);
+    --content-muted: hsla(0, 0%, 60%);
     --content-link: oklch(70.5% 0.22 37);
   }
 }
 
 html {
-    font-size: 1rem;
     background-color: var(--background);
     color: var(--content);
     font-family: var(--font-family-mono);
@@ -44,14 +45,32 @@ html {
     line-height: 1.75;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-size: 0.8125rem;
+    line-height: 1.75;
+    font-weight: 400;
+}
+
+p {
+   margin: 0;
+}
+
 .prose {
     text-wrap: pretty;
 }
 
+.prose p {
+    margin-bottom: 1rem;
+}
+
 a {
     color: var(--content);
-    &:hover{
+    &:hover {
         background-color: oklch(70.5% 0.22 37);
+    }
+    &.link-nostyle:hover {
+        background-color: transparent;
     }
 }
 
@@ -60,4 +79,8 @@ a {
     max-width: var(--site-width);
     margin: 0 auto;
     padding-inline: 1rem;
+}
+
+.text-colour-secondary {
+   color: var(--content-muted);
 }

@@ -1,0 +1,23 @@
+{
+  "name": "liammews-studio",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "check": "tsc --noEmit",
+    "deploy": "sanity build && wrangler deploy --config wrangler.jsonc"
+  },
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "sanity": "^6.16.0",
+    "styled-components": "^6.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "typescript": "^5.9.0"
+  }
+}
