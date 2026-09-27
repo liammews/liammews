@@ -25,6 +25,13 @@ export const record = defineType({
       validation: (rule) => rule.integer().min(1000).max(9999),
     }),
     defineField({name: 'purchased', title: 'Purchased', type: 'date'}),
+    defineField({
+      name: 'wishlist',
+      title: 'Wishlist',
+      type: 'boolean',
+      initialValue: false,
+      description: 'Exclude this record from the website.',
+    }),
   ],
   preview: {select: {title: 'title', subtitle: 'artist', media: 'cover'}},
 });

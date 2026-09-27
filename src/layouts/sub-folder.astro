@@ -1,0 +1,30 @@
+---
+import Layout from "./main.astro";
+
+interface Props {
+    title: string;
+    subtitle: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<Layout>
+    <header class="sub-folder_heading">
+        <h1>{title}</h1>
+        <p class="text-colour-secondary">{subtitle}</p>
+    </header>
+    <slot />
+</Layout>
+
+<style>
+    .sub-folder_heading {
+        margin-bottom: 2rem;
+    }
+
+    .sub-folder_heading h1,
+    .sub-folder_heading p {
+        margin: 0;
+        font-size: 1rem;
+    }
+</style>

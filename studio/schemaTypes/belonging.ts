@@ -34,6 +34,13 @@ export const belonging = defineType({
     }),
     defineField({name: 'purchased', title: 'Purchased', type: 'date'}),
     defineField({
+      name: 'wishlist',
+      title: 'Wishlist',
+      type: 'boolean',
+      initialValue: false,
+      description: 'Exclude this item from the website inventory.',
+    }),
+    defineField({
       name: 'retired',
       title: 'Retired',
       type: 'date',

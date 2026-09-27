@@ -2,10 +2,10 @@
 import { Image } from "astro:assets";
 import Layout from "../layouts/sub-folder.astro";
 
-interface Thing {
-    name: string;
+interface RecordItem {
+    title: string;
     imageUrl: string | null;
-    categories: string[];
+    artist: string | null;
 }
 
 const projectId = import.meta.env.SANITY_PROJECT_ID || "2puhe8k9";
@@ -14,46 +14,45 @@ const url = new URL(
     `https://${projectId}.api.sanity.io/v2025-02-19/data/query/${dataset}`,
 );
 url.searchParams.set("perspective", "published");
-// Things retain their original stored document type in Sanity.
 url.searchParams.set(
     "query",
-    `*[_type == "belonging" && !defined(retired) && coalesce(wishlist, false) == false] | order(purchased desc) {
-  name,
-  "imageUrl": image.asset->url,
-  "categories": coalesce(categories[]->name, [])
+    `*[_type == "record" && coalesce(wishlist, false) == false] | order(year desc, title asc) {
+  title,
+  artist,
+  "imageUrl": cover.asset->url
 }`,
 );
 
 const response = await fetch(url, { signal: AbortSignal.timeout(15000) });
 if (!response.ok) {
-    throw new Error(`Unable to load inventory from Sanity: ${response.status}`);
+    throw new Error(`Unable to load records from Sanity: ${response.status}`);
 }
-const { result: things }: { result: Thing[] } = await response.json();
+const { result: records }: { result: RecordItem[] } = await response.json();
 ---
 
-<Layout title="Inventory" subtitle={`${things.length} ${things.length === 1 ? 'item' : 'items'}`}>
-    {things.length ? (
-        <ul class="inventory_list">
-            {things.map((thing, index) => (
-                <li class="inventory-item_wrap">
-                    {thing.imageUrl && (
-                        <div class="inventory-item_img-wrapper">
+<Layout title="Records" subtitle={`${records.length} ${records.length === 1 ? 'record' : 'records'}`}>
+    {records.length ? (
+        <ul class="records_list">
+            {records.map((record, index) => (
+                <li class="records-item_wrap">
+                    {record.imageUrl && (
+                        <div class="records-item_img-wrapper">
                             <Image
-                                src={thing.imageUrl}
-                                alt={thing.name}
+                                src={record.imageUrl}
+                                alt={record.title}
                                 loading={index < 6 ? "eager" : "lazy"}
-                                class="inventory-item_img"
+                                class="records-item_img"
                                 width={1200}
                                 height={1200}
                             />
                         </div>
                     )}
 
-                    <div class="inventory-item_content">
-                        <p>{thing.name}</p>
-                        {thing.categories.length > 0 && (
+                    <div class="records-item_content">
+                        <p>{record.title}</p>
+                        {record.artist && (
                             <p class="text-colour-secondary">
-                                {thing.categories.join(", ")}
+                                {record.artist}
                             </p>
                         )}
                     </div>
@@ -61,12 +60,12 @@ const { result: things }: { result: Thing[] } = await response.json();
             ))}
         </ul>
     ) : (
-        <p>No things published yet.</p>
+        <p>No records published yet.</p>
     )}
 </Layout>
 
 <style>
-    .inventory_list {
+    .records_list {
         width: 100%;
         padding: 0;
         margin: 0;
@@ -77,17 +76,17 @@ const { result: things }: { result: Thing[] } = await response.json();
     }
 
     @media (max-width: 700px) {
-        .inventory_list {
+        .records_list {
             display: flex;
             flex-direction: column;
         }
     }
 
-    .inventory-item_wrap {
+    .records-item_wrap {
         width: 100%;
     }
 
-    .inventory-item_img-wrapper {
+    .records-item_img-wrapper {
         background-color: var(--foreground);
         aspect-ratio: 1/1;
         display: flex;
@@ -95,17 +94,18 @@ const { result: things }: { result: Thing[] } = await response.json();
         align-items: center;
     }
 
-    .inventory-item_img {
+    .records-item_img {
         height: 100%;
         width: 100%;
     }
 
-    .inventory-item_content {
+    .records-item_content {
         width: 100%;
         padding-top: 0.5rem;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        display: block;
+    }
+
+    .records-item_content p {
+        margin: 0;
     }
 </style>
